@@ -20,6 +20,8 @@
     "lint:quiet": "eslint src/* --quiet --no-error-on-unmatched-pattern"
   },
   "dependencies": {
+    "@retrolove-games/ui-hello-world": "file:../web-ui/packages/hello-world",
+    "@retrolove-games/ui-themes": "file:../web-ui/packages/themes",
     "dotenv": "^8.6.0",
     "gatsby": "^4.7.2",
     "gatsby-plugin-google-analytics": "^4.7.0",
