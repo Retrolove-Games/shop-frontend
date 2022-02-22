@@ -14,3 +14,7 @@ This project uses TypeScript. Please follow [Gatsby notes](https://www.gatsbyjs.
 
 * Please remember to run `gatsby clean` before switching `npm run develop` and `npm run develop:public` 😅
 * By default Gatsby is listening on a port [9000](http://localhost:9000).
+
+## Inspirations & docs
+
+* [Dark mode](https://samrose.me/posts/dark-theme-with-stitches/)
