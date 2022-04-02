@@ -20,8 +20,11 @@
     "lint:quiet": "eslint src/* --quiet --no-error-on-unmatched-pattern"
   },
   "dependencies": {
+    "@retrolove-games/ui-button": "file:../web-ui/packages/button",
     "@retrolove-games/ui-hello-world": "file:../web-ui/packages/hello-world",
+    "@retrolove-games/ui-icon": "file:../web-ui/packages/icon",
     "@retrolove-games/ui-logo": "file:../web-ui/packages/logo",
+    "@retrolove-games/ui-switch": "file:../web-ui/packages/switch",
     "@retrolove-games/ui-themes": "file:../web-ui/packages/themes",
     "dotenv": "^8.6.0",
     "gatsby": "^4.7.2",
