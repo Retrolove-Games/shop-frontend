@@ -43,5 +43,16 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: [
+            "Source+Sans+Pro:400,400i,700&display=swap",
+            "Zilla+Slab+Highlight:700&display=swap",
+          ],
+        },
+      },
+    },
   ],
 };
