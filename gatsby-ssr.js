@@ -24,6 +24,9 @@ function setColorsByTheme() {
   let root = document.documentElement;
   if (colorMode === "dark") {
     root.classList.add(darkThemeClassName);
+    root.dataset.theme = "dark";
+  } else {
+    root.dataset.theme = "light";
   }
 }
 

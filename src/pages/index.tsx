@@ -3,9 +3,10 @@ import * as React from "react";
 import { Button } from "@retrolove-games/ui-button";
 import { LogoDesktop, LogoMobile } from "@retrolove-games/ui-logo";
 import { ThemeContext } from "../context/ThemeContext";
-import { IconMoon, IconSun } from "@retrolove-games/ui-icon";
+import { IconMoon, IconSun, IconBasket } from "@retrolove-games/ui-icon";
 import { Switch } from "@retrolove-games/ui-switch";
 import { Lozenge } from "@retrolove-games/ui-lozenge";
+import { Badge } from "@retrolove-games/ui-badge";
 
 // markup
 const IndexPage = () => {
@@ -16,8 +17,8 @@ const IndexPage = () => {
       {(theme) => (
         <main
           style={{
-            backgroundColor: theme.colorMode === "dark" && "#252220",
-            transition: "all .5s linear",
+            // backgroundColor: theme.colorMode === "dark" && "#252220",
+            // transition: "all .5s linear",
             height: "100vh",
             padding: "100px",
           }}
@@ -69,9 +70,20 @@ const IndexPage = () => {
           </div>
 
           <div>
-            <Button color="neonBlue">Static color blue</Button>
+            <Button color="neonBlue" size="small">Static color blue</Button>
           </div>
 
+
+          <div>
+            <Badge label="Ilość produktów">{1}</Badge>
+          </div>
+          <div>
+            <Badge label="Ilość produktów">{100}</Badge>
+          </div>
+
+          <div>
+            <IconBasket /><Badge label="Ilość produktów">{1}</Badge>
+          </div>
         </main>
       )}
     </ThemeContext.Consumer>
