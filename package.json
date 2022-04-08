@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@retrolove-games/css-reset": "file:../web-ui/packages/css-reset",
+    "@retrolove-games/ui-badge": "file:../web-ui/packages/badge",
     "@retrolove-games/ui-button": "file:../web-ui/packages/button",
     "@retrolove-games/ui-hello-world": "file:../web-ui/packages/hello-world",
     "@retrolove-games/ui-icon": "file:../web-ui/packages/icon",
