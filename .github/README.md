@@ -18,3 +18,4 @@ This project uses TypeScript. Please follow [Gatsby notes](https://www.gatsbyjs.
 ## Inspirations & docs
 
 * [Dark mode](https://samrose.me/posts/dark-theme-with-stitches/)
+* [Woocommerce & Gatsby](https://github.com/imranhsayed/gatsby-woocommerce-themes)
