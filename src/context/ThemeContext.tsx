@@ -18,8 +18,10 @@ export const ThemeContext = React.createContext<ThemeContextValue>({
   setColorMode: () => {},
 });
 
+const getTheme = () => document.documentElement.dataset.theme as ColorMode ?? "light";
+
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [colorMode, rawSetColorMode] = React.useState<ColorMode>("light");
+  const [colorMode, rawSetColorMode] = React.useState<ColorMode>(getTheme());
 
   React.useEffect(() => {
     const root = document.documentElement;
