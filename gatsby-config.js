@@ -1,6 +1,7 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const breakpoints = require("@retrolove-games/ui-themes").breakpoints;
 
 module.exports = {
   siteMetadata: {
@@ -52,6 +53,12 @@ module.exports = {
             "Zilla+Slab+Highlight:700&display=swap",
           ],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-fresnel`,
+      options: {
+        breakpoints,
       },
     },
   ],
