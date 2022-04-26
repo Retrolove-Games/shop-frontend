@@ -1,13 +1,21 @@
 import React from "react";
+import { VariantProps } from "@stitches/react";
+import { Wrapper, Edge, Center } from "./Navbar.styles";
 
 type SubComponents = {
-  edge: React.FC;
+  left: React.FC;
   center: React.FC;
+  right: React.FC;
 };
 
-type ComponentType = React.FC & SubComponents;
+type ComponentVariants = VariantProps<typeof Wrapper>;
 
-export const Navbar: ComponentType = ({ children }) => <div>{children}</div>;
+type ComponentType = React.FC<ComponentVariants> & SubComponents;
 
-Navbar.edge = ({ children }) => <div>{children}</div>;
-Navbar.center = ({ children }) => <div>{children}</div>;
+export const Navbar: ComponentType = ({ children, ...props }) => (
+  <Wrapper {...props}>{children}</Wrapper>
+);
+
+Navbar.left = ({ children }) => <Edge align="left">{children}</Edge>;
+Navbar.center = ({ children }) => <Center>{children}</Center>;
+Navbar.right = ({ children }) => <Edge align="right">{children}</Edge>;
