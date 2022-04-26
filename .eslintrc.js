@@ -14,5 +14,12 @@ module.exports = {
       },
     ],
   },
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["@components", "./src/components"]
+      ]
+    }
+  },
   extends: ["gatsby-standard", "airbnb-base", "react-app", "prettier"],
 };
