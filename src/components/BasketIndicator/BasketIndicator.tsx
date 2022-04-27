@@ -4,18 +4,18 @@ import { IconWithBadge } from "@retrolove-games/ui-icon-with-badge";
 import { IconBasket } from "@retrolove-games/ui-icon";
 
 type ComponentProps = {
-  count: number;
+  children: number;
 };
 
-export const BasketIndicator: React.FC<ComponentProps> = ({ count }) => (
+export const BasketIndicator: React.VFC<ComponentProps> = ({ children, ...props }) => (
   <>
-    <IconWithBadge>
+    <IconWithBadge {...props}>
       <IconWithBadge.icon>
         <IconBasket />
       </IconWithBadge.icon>
       <IconWithBadge.badge>
         <Badge label="Ilość produktów" minValue={0}>
-          {count}
+          {children}
         </Badge>
       </IconWithBadge.badge>
     </IconWithBadge>

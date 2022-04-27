@@ -28,7 +28,7 @@ export const NavbarMobile: ComponentType = () => {
         <LogoMobile />
       </Navbar.center>
       <Navbar.right>
-        <BasketIndicator count={0} />
+        <BasketIndicator>{0}</BasketIndicator>
       </Navbar.right>
     </Navbar>
   );
