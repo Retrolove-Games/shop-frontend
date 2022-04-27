@@ -22,6 +22,7 @@ This project uses TypeScript. Please follow [Gatsby notes](https://www.gatsbyjs.
 ## Hygen templates
 
 * `hygen component-void-unstyled with-prompt`
+* `hygen component-void-styled with-prompt`
 
 ## Inspirations & docs
 
