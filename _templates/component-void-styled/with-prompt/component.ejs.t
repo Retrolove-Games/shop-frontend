@@ -2,7 +2,7 @@
 to: src/components/<%=name%>/<%=name%>.tsx
 ---
 import React from "react";
-import { Wrapper } from "./<%=name%>.styles.ts";
+import { Wrapper } from "./<%=name%>.styles";
 
 type ComponentProps = {};
 
