@@ -7,7 +7,9 @@ type ComponentProps = {
   children: number;
 };
 
-export const BasketIndicator: React.VFC<ComponentProps> = ({ children, ...props }) => (
+type ComponentType = React.VFC<ComponentProps>;
+
+export const BasketIndicator: ComponentType = ({ children, ...props }) => (
   <>
     <IconWithBadge {...props}>
       <IconWithBadge.icon>
