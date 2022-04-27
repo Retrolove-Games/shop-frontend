@@ -2,20 +2,22 @@ import React from "react";
 import { Navbar } from "./Navbar";
 import { LogoMobile } from "@retrolove-games/ui-logo";
 import { Button } from "@retrolove-games/ui-button";
-import { IconBurger, IconBasket } from "@retrolove-games/ui-icon";
+import { IconBurger } from "@retrolove-games/ui-icon";
+import { BasketIndicator } from "@components/BasketIndicator";
 import { useSidebar } from "@src/context/SidebarContext";
 
 type ComponentType = React.VFC;
 
 export const NavbarMobile: ComponentType = () => {
-  const { toggleSidebar } = useSidebar();
+  const { isSidebarOpened, toggleSidebar } = useSidebar();
 
   return (
     <Navbar size="mobile">
       <Navbar.left>
         <Button
           onClick={toggleSidebar}
-          aria-expanded={false}
+          aria-expanded={isSidebarOpened}
+          aria-label={"Otwórz menu"}
           color="transparent"
           size="medium"
         >
@@ -25,7 +27,9 @@ export const NavbarMobile: ComponentType = () => {
       <Navbar.center>
         <LogoMobile />
       </Navbar.center>
-      <Navbar.right>World</Navbar.right>
+      <Navbar.right>
+        <BasketIndicator count={0} />
+      </Navbar.right>
     </Navbar>
   );
 };
