@@ -1,2 +1,0 @@
-# Snippets useful for development
-
