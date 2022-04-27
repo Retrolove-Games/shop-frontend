@@ -4,13 +4,13 @@ import { LogoMobile } from "@retrolove-games/ui-logo";
 import { Button } from "@retrolove-games/ui-button";
 import { IconBurger } from "@retrolove-games/ui-icon";
 import { BasketIndicator } from "@components/BasketIndicator";
-import { useSidebar } from "@src/context/SidebarContext";
+import type { ComponentType } from "./Navbar.types";
 
-type ComponentType = React.VFC;
-
-export const NavbarMobile: ComponentType = () => {
-  const { isSidebarOpened, toggleSidebar } = useSidebar();
-
+export const NavbarMobile: ComponentType = ({
+  toggleSidebar,
+  basketCount,
+  isSidebarOpened,
+}) => {
   return (
     <Navbar size="mobile">
       <Navbar.left>
@@ -28,7 +28,7 @@ export const NavbarMobile: ComponentType = () => {
         <LogoMobile />
       </Navbar.center>
       <Navbar.right>
-        <BasketIndicator>{0}</BasketIndicator>
+        <BasketIndicator>{basketCount}</BasketIndicator>
       </Navbar.right>
     </Navbar>
   );

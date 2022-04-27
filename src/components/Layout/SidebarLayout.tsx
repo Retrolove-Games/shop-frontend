@@ -1,11 +1,9 @@
 import React from "react";
-import { NavbarMobile } from "@components/Navbar";
+import { Header } from "@components/Header";
 
 export const SidebarLayout: React.FC = ({ children }) => (
   <>
-    <header>
-      <NavbarMobile />
-    </header>
+    <Header />
     <div>
 
     </div>
