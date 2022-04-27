@@ -4,6 +4,7 @@ export const Wrapper = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  overflow: "hidden",
 
   background:
     "linear-gradient(180deg, $whiteDefault 46.75%, rgba(255, 255, 255, 0) 100%)",
@@ -23,6 +24,8 @@ export const Wrapper = styled("div", {
     size: {
       mobile: {
         height: "64px",
+        paddingLeft: "$sm",
+        paddingRight: "$sm",
       },
       desktop: {
         height: "90px",
@@ -32,8 +35,8 @@ export const Wrapper = styled("div", {
 });
 
 export const Edge = styled("div", {
-  order: 0,
-  flex: "1 1 auto",
+  flexGrow: 1,
+  flexBasis: 0,
   alignSelf: "auto",
 
   display: "flex",
@@ -58,8 +61,8 @@ export const Edge = styled("div", {
 });
 
 export const Center = styled("div", {
-  order: 0,
-  flex: "1 1 auto",
+  flexGrow: 1,
+  flexBasis: 0,
   alignSelf: "auto",
   textAlign: "center",
 
