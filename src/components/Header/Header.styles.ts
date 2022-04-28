@@ -5,7 +5,7 @@ export const Wrapper = styled("header", {
   top: 0,
   left: 0,
 
-  width: "100vw",
+  width: "100%",
 
   /**
    * Themes

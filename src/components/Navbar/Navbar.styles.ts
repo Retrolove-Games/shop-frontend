@@ -29,6 +29,8 @@ export const Wrapper = styled("div", {
       },
       desktop: {
         height: "90px",
+        paddingLeft: "$md",
+        paddingRight: "$md",
       },
     },
   },
@@ -72,4 +74,10 @@ export const Center = styled("div", {
   justifyContent: "center",
   alignContent: "stretch",
   alignItems: "center",
+});
+
+export const Toolbox = styled("div", {
+  '& > * ~ *': {
+    marginLeft: "$xl",
+  }
 });

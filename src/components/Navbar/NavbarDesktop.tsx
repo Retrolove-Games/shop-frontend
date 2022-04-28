@@ -1,39 +1,25 @@
 import React from "react";
 import { Navbar } from "./Navbar";
 import { LogoDesktop } from "@retrolove-games/ui-logo";
-import { Button } from "@retrolove-games/ui-button";
 import { IconBurger } from "@retrolove-games/ui-icon";
-import { BasketIndicator } from "@components/BasketIndicator";
 import { LabelGroup } from "@retrolove-games/ui-label-group";
 import { Label } from "@retrolove-games/ui-label";
-import { useId } from "react-id-generator";
+import { NavbarToolbox } from "./NavbarToolbox";
 import type { ComponentType } from "./Navbar.types";
 
 export const NavbarDesktop: ComponentType = ({
   toggleSidebar,
-  basketCount,
   isSidebarOpened,
 }) => {
-  const [htmlId] = useId();
-
   return (
     <Navbar size="desktop">
       <Navbar.left>
-        <LabelGroup as={"div"}>
+        <LabelGroup onClick={toggleSidebar}>
           <LabelGroup.left>
-            <Button
-              onClick={toggleSidebar}
-              aria-expanded={isSidebarOpened}
-              aria-label={"Otwórz menu"}
-              color="transparent"
-              size="medium"
-              id={htmlId}
-            >
               <IconBurger />
-            </Button>
           </LabelGroup.left>
           <LabelGroup.right>
-            <Label htmlFor={htmlId}>Menu</Label>
+            <Label as="span">Menu</Label>
           </LabelGroup.right>
         </LabelGroup>
       </Navbar.left>
@@ -41,7 +27,7 @@ export const NavbarDesktop: ComponentType = ({
         <LogoDesktop />
       </Navbar.center>
       <Navbar.right>
-        <BasketIndicator>{basketCount}</BasketIndicator>
+        <NavbarToolbox />
       </Navbar.right>
     </Navbar>
   );

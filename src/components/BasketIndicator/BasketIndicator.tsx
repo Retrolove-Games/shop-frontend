@@ -5,6 +5,7 @@ import { IconBasket } from "@retrolove-games/ui-icon";
 
 type ComponentProps = {
   children: number;
+  id?: string;
 };
 
 type ComponentType = React.VFC<ComponentProps>;

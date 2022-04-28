@@ -8,7 +8,6 @@ import type { ComponentType } from "./Navbar.types";
 
 export const NavbarMobile: ComponentType = ({
   toggleSidebar,
-  basketCount,
   isSidebarOpened,
 }) => {
   return (
@@ -28,7 +27,7 @@ export const NavbarMobile: ComponentType = ({
         <LogoMobile />
       </Navbar.center>
       <Navbar.right>
-        <BasketIndicator>{basketCount}</BasketIndicator>
+        <BasketIndicator>{0}</BasketIndicator>
       </Navbar.right>
     </Navbar>
   );
