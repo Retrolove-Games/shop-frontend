@@ -6,6 +6,7 @@ type ColorMode = "light" | "dark";
 type ThemeContextValue = {
   colorMode: ColorMode;
   setColorMode: (newValue: ColorMode) => void;
+  toggleColorMode: () => void;
 };
 
 const themes = {
@@ -16,6 +17,7 @@ const themes = {
 export const ThemeContext = React.createContext<ThemeContextValue>({
   colorMode: "light",
   setColorMode: () => {},
+  toggleColorMode: () => {},
 });
 
 const getTheme = () =>
@@ -44,6 +46,8 @@ export const ThemeProvider: React.FC = ({ children }) => {
     return {
       colorMode,
       setColorMode,
+      toggleColorMode: () =>
+        setColorMode(colorMode === "dark" ? "light" : "dark"),
     };
   }, [colorMode, rawSetColorMode]);
 
