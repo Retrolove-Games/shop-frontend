@@ -22,10 +22,10 @@ export const Header: ComponentType = ({ ...props }) => {
 
   return (
     <Wrapper {...props}>
-      <Media lessThan="md">
+      <Media lessThan="xl">
         <NavbarMobile {...sharedProps} />
       </Media>
-      <Media greaterThanOrEqual="md">
+      <Media greaterThanOrEqual="xl">
         <NavbarDesktop {...sharedProps} />
       </Media>
     </Wrapper>

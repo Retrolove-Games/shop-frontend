@@ -4,6 +4,7 @@ export const Wrapper = styled("header", {
   position: "fixed",
   top: 0,
   left: 0,
+  zIndex: 1,
 
   width: "100%",
 

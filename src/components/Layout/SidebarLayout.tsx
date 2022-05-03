@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "@components/Header";
+import { Background } from "@components/Background";
 
 export const SidebarLayout: React.FC = ({ children }) => (
   <>
@@ -13,5 +14,6 @@ export const SidebarLayout: React.FC = ({ children }) => (
     <footer>
 
     </footer>
+    <Background />
   </>
 )
