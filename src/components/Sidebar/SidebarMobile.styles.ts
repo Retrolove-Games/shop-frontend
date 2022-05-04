@@ -31,7 +31,9 @@ export const Wrapper = styled("div", {
   /**
    * Themes
    */
-  [`.${darkTheme} &`]: {},
+  [`.${darkTheme} &`]: {
+    background: "$darkDefault"
+  },
 
   /**
    * States
