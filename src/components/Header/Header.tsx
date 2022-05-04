@@ -2,8 +2,7 @@ import React from "react";
 import { Wrapper } from "./Header.styles";
 import { NavbarMobile, NavbarDesktop } from "@components/Navbar";
 import { useSidebar } from "@src/context/SidebarContext";
-// @ts-ignore
-import { Media } from "gatsby-plugin-fresnel";
+import { MobileDesktop } from "@components/Utils";
 
 type ComponentProps = {};
 
@@ -14,20 +13,21 @@ export const Header: ComponentType = ({ ...props }) => {
 
   const basketCount = 0;
 
-  const sharedProps = React.useMemo(() => ({
-    toggleSidebar,
-    basketCount,
-    isSidebarOpened,
-  }), [isSidebarOpened, basketCount]);
+  const sharedProps = React.useMemo(
+    () => ({
+      toggleSidebar,
+      basketCount,
+      isSidebarOpened,
+    }),
+    [isSidebarOpened, basketCount]
+  );
 
   return (
     <Wrapper {...props}>
-      <Media lessThan="xl">
-        <NavbarMobile {...sharedProps} />
-      </Media>
-      <Media greaterThanOrEqual="xl">
-        <NavbarDesktop {...sharedProps} />
-      </Media>
+      <MobileDesktop
+        mobile={<NavbarMobile {...sharedProps} />}
+        desktop={<NavbarDesktop {...sharedProps} />}
+      />
     </Wrapper>
   );
 };
