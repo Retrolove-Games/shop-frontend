@@ -1,6 +1,6 @@
 html body {
   background-color: white;
-  transition: background .5s ease-in;
+  transition: background .1s ease-in;
 }
 
 html[data-theme="dark"] body {
