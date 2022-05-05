@@ -1,5 +1,5 @@
 import { styled, darkTheme } from "@retrolove-games/ui-themes";
-import { DESKTOP_MENU_WIDTH } from "@src/constants/layout";
+import { DESKTOP_MENU_WIDTH, DESKTOP_NAVBAR_HEIGHT } from "@src/constants/layout";
 
 export const Wrapper = styled("div", {
   background: "$whiteDefault",
@@ -37,4 +37,12 @@ export const Wrapper = styled("div", {
   variants: {
     size: {},
   },
+});
+
+export const Header = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  height: DESKTOP_NAVBAR_HEIGHT,
 });
