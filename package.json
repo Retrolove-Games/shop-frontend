@@ -32,6 +32,7 @@
     "@retrolove-games/ui-lozenge": "file:../web-ui/packages/lozenge",
     "@retrolove-games/ui-switch": "file:../web-ui/packages/switch",
     "@retrolove-games/ui-themes": "file:../web-ui/packages/themes",
+    "@retrolove-games/ui-toolbox": "file:../web-ui/packages/toolbox",
     "@stitches/react": "^1.2.8",
     "dotenv": "^8.6.0",
     "gatsby": "^4.7.2",
