@@ -2,7 +2,7 @@ import React from "react";
 import { SidebarMobile } from "./SidebarMobile";
 import { SidebarDesktop } from "./SidebarDesktop";
 import { MobileDesktop } from "@components/Utils";
-import type { ComponentProps } from "./types";
+import type { ComponentProps } from "./Sidebar.types";
 
 type ComponentType = React.VFC<ComponentProps>;
 
