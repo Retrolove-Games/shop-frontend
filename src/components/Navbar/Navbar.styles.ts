@@ -1,4 +1,5 @@
 import { styled, darkTheme } from "@retrolove-games/ui-themes";
+import { MOBILE_NAVBAR_HEIGHT, DESKTOP_NAVBAR_HEIGHT } from "@src/constants/layout";
 
 export const Wrapper = styled("div", {
   display: "flex",
@@ -23,12 +24,12 @@ export const Wrapper = styled("div", {
   variants: {
     size: {
       mobile: {
-        height: "64px",
+        height: MOBILE_NAVBAR_HEIGHT,
         paddingLeft: "$sm",
         paddingRight: "$sm",
       },
       desktop: {
-        height: "90px",
+        height: DESKTOP_NAVBAR_HEIGHT,
         paddingLeft: "$md",
         paddingRight: "$md",
       },
