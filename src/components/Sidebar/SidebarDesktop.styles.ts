@@ -13,6 +13,9 @@ export const Wrapper = styled("div", {
   height: "100vh",
   width: DESKTOP_MENU_WIDTH,
 
+  paddingLeft: "$md",
+  paddingRight: "$lg",
+
   transition: "transform 0.5s ease-out",
   transform: "translate3d(-100%, 0, 0)",
 
@@ -41,7 +44,7 @@ export const Wrapper = styled("div", {
 
 export const Header = styled("div", {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
 
   height: DESKTOP_NAVBAR_HEIGHT,

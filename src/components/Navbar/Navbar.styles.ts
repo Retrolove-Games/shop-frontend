@@ -76,9 +76,3 @@ export const Center = styled("div", {
   alignContent: "stretch",
   alignItems: "center",
 });
-
-export const Toolbox = styled("div", {
-  '& > * ~ *': {
-    marginLeft: "$xl",
-  }
-});

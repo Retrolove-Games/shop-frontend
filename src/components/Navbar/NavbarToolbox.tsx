@@ -4,7 +4,7 @@ import { BasketIndicator } from "@components/BasketIndicator";
 import { LabelGroup } from "@retrolove-games/ui-label-group";
 import { Label } from "@retrolove-games/ui-label";
 import { IconUser } from "@retrolove-games/ui-icon";
-import { Toolbox } from "./Navbar.styles";
+import { Toolbox } from "@retrolove-games/ui-toolbox";
 import { useId } from "react-id-generator";
 
 type ComponentProps = {};
@@ -15,7 +15,7 @@ export const NavbarToolbox: ComponentType = () => {
   const [themeId] = useId();
 
   return (
-    <Toolbox>
+    <Toolbox spacing="xl">
       <LabelGroup as={"div"}>
         <LabelGroup.left>
           <ThemeSwitch id={themeId} />
