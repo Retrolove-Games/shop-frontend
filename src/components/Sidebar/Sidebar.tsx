@@ -9,6 +9,6 @@ type ComponentType = React.VFC<ComponentProps>;
 export const Sidebar: ComponentType = ({ expanded, onClose }) => (
   <MobileDesktop
     mobile={<SidebarMobile expanded={expanded} onClose={onClose} />}
-    desktop={<SidebarDesktop expanded={expanded} />}
+    desktop={<SidebarDesktop expanded={expanded} onClose={onClose} />}
   />
 );

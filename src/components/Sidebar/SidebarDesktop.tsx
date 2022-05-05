@@ -1,13 +1,10 @@
 import React from "react";
 import { Wrapper } from "./SidebarDesktop.styles";
-
-type ComponentProps = {
-  expanded: boolean
-};
+import type { ComponentProps } from "./types";
 
 type ComponentType = React.VFC<ComponentProps>;
 
-export const SidebarDesktop: ComponentType = ({ expanded, ...props }) => (
+export const SidebarDesktop: ComponentType = ({ expanded, onClose, ...props }) => (
   <Wrapper aria-expanded={expanded} {...props}>
     Cholibka desktop
   </Wrapper>

@@ -1,10 +1,5 @@
 import { styled, darkTheme, keyframes } from "@retrolove-games/ui-themes";
 
-const swingInLeft = keyframes({
-  "0%": { transform: "rotateY(-70deg)", transformOrigin: "left", opacity: 0 },
-  "100%": { transform: "rotateY(0)", transformOrigin: "left", opacity: 1 },
-});
-
 export const Wrapper = styled("div", {
   background: "$whiteDefault",
 
