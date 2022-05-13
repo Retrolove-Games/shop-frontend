@@ -4,6 +4,7 @@ import { LogoMobile } from "@retrolove-games/ui-logo";
 import { Button } from "@retrolove-games/ui-button";
 import { IconBurger } from "@retrolove-games/ui-icon";
 import { BasketIndicator } from "@components/BasketIndicator";
+import { Link } from "gatsby";
 import type { ComponentType } from "./Navbar.types";
 
 export const NavbarMobile: ComponentType = ({
@@ -24,7 +25,9 @@ export const NavbarMobile: ComponentType = ({
         </Button>
       </Navbar.left>
       <Navbar.center>
-        <LogoMobile />
+        <Link to="/">
+          <LogoMobile />
+        </Link>
       </Navbar.center>
       <Navbar.right>
         <BasketIndicator>{0}</BasketIndicator>

@@ -5,6 +5,7 @@ import { IconBurger } from "@retrolove-games/ui-icon";
 import { LabelGroup } from "@retrolove-games/ui-label-group";
 import { Label } from "@retrolove-games/ui-label";
 import { NavbarToolbox } from "./NavbarToolbox";
+import { Link } from "gatsby";
 import type { ComponentType } from "./Navbar.types";
 
 export const NavbarDesktop: ComponentType = ({
@@ -24,7 +25,9 @@ export const NavbarDesktop: ComponentType = ({
         </LabelGroup>
       </Navbar.left>
       <Navbar.center>
-        <LogoDesktop />
+        <Link to="/">
+          <LogoDesktop />
+        </Link>
       </Navbar.center>
       <Navbar.right>
         <NavbarToolbox />
