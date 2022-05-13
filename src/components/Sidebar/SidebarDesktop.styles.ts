@@ -1,5 +1,5 @@
 import { styled, darkTheme } from "@retrolove-games/ui-themes";
-import { DESKTOP_MENU_WIDTH, DESKTOP_NAVBAR_HEIGHT } from "@src/constants/layout";
+import { DESKTOP_MENU_WIDTH, DESKTOP_NAVBAR_HEIGHT, MIN_DESKTOP_MENU_WIDTH } from "@src/constants/layout";
 
 export const Wrapper = styled("div", {
   background: "$whiteDefault",
@@ -12,6 +12,7 @@ export const Wrapper = styled("div", {
 
   height: "100vh",
   width: DESKTOP_MENU_WIDTH,
+  minWidth: MIN_DESKTOP_MENU_WIDTH,
 
   paddingLeft: "$md",
   paddingRight: "$lg",

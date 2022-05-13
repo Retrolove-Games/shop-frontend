@@ -1,13 +1,55 @@
-import { styled, darkTheme } from "@retrolove-games/ui-themes";
+import { styled } from "@retrolove-games/ui-themes";
+import {
+  MOBILE_NAVBAR_HEIGHT,
+  DESKTOP_NAVBAR_HEIGHT,
+  DESKTOP_MENU_WIDTH,
+} from "@src/constants/layout";
 
-export const Main = styled("main", {
-
+export const Container = styled("main", {
+  width: "100%",
 });
 
-export const Sidebar = styled("div", {
-  backgroundColor: "$whiteDefault",
+export const Wrapper = styled("div", {
+  /**
+   * Variants
+   */
+  variants: {
+    layout: {
+      mobile: {
+        paddingTop: MOBILE_NAVBAR_HEIGHT,
+        paddingLeft: "$sm",
+        paddingRight: "$sm",
+      },
+      smallDesktop: {
+        display: "flex",
 
-  [`.${darkTheme} &`]: {
-    backgroundColor: "$darkDefault",
-  }
+        paddingTop: DESKTOP_NAVBAR_HEIGHT,
+        paddingLeft: "$md",
+        paddingRight: "$md",
+
+        // Container
+        [`& ${Container}`]: {
+          background: "Green",
+        },
+      },
+      desktop: {
+        justifyContent: "end",
+
+        // Container
+        [`& ${Container}`]: {
+          maxWidth: `calc(100% - ${DESKTOP_MENU_WIDTH})`,
+          background: "Red",
+        },
+      },
+      largeDesktop: {
+        justifyContent: "center",
+
+        // Container
+        [`& ${Container}`]: {
+          maxWidth: `calc(100% - ${DESKTOP_MENU_WIDTH} * 2)`,
+          background: "Yellow",
+        },
+      },
+    },
+  },
 });
