@@ -12,9 +12,9 @@ export const Wrapper = styled("div", {
 
   height: "100vh",
   width: DESKTOP_MENU_WIDTH,
-  minWidth: MIN_DESKTOP_MENU_WIDTH,
+  // minWidth: MIN_DESKTOP_MENU_WIDTH,
 
-  paddingLeft: "$md",
+  paddingLeft: "$sm",
   paddingRight: "$lg",
 
   transition: "transform 0.5s ease-out",

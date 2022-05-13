@@ -3,10 +3,23 @@ import {
   MOBILE_NAVBAR_HEIGHT,
   DESKTOP_NAVBAR_HEIGHT,
   DESKTOP_MENU_WIDTH,
+  MIN_DESKTOP_MENU_WIDTH
 } from "@src/constants/layout";
 
 export const Container = styled("main", {
   width: "100%",
+  transition: "width 0.5s ease-out",
+  variants: {
+    layout: {
+      standard: {
+        width: `calc(100vw - ${DESKTOP_MENU_WIDTH} - 32px )`,
+        // minWidth: `calc(100vw - ${MIN_DESKTOP_MENU_WIDTH})`,
+      },
+      expanded: {
+        width: "100%",
+      }
+    }
+  }
 });
 
 export const Wrapper = styled("div", {
@@ -22,6 +35,7 @@ export const Wrapper = styled("div", {
       },
       smallDesktop: {
         display: "flex",
+        justifyContent: "end",
 
         paddingTop: DESKTOP_NAVBAR_HEIGHT,
         paddingLeft: "$md",
@@ -33,10 +47,9 @@ export const Wrapper = styled("div", {
         },
       },
       desktop: {
-        justifyContent: "end",
-
         // Container
         [`& ${Container}`]: {
+          width: "100%",
           maxWidth: `calc(100% - ${DESKTOP_MENU_WIDTH})`,
           background: "Red",
         },

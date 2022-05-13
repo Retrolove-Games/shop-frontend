@@ -15,12 +15,12 @@ export const SidebarLayout: React.FC = ({ children }) => {
       <Wrapper
         layout={{
           "@initial": "mobile",
-          "@lg": "smallDesktop",
+          "@xl": "smallDesktop",
           "@xxl": "desktop",
           "@xxxl": "largeDesktop",
         }}
       >
-        <Container>{children}</Container>
+        <Container layout={isSidebarOpened ? "standard" : "expanded"}>{children}</Container>
       </Wrapper>
       <footer></footer>
       <Background />
