@@ -3,7 +3,7 @@ import { MOBILE_NAVBAR_HEIGHT, DESKTOP_NAVBAR_HEIGHT } from "@src/constants/layo
 
 export const Wrapper = styled("div", {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
   overflow: "hidden",
 
@@ -38,9 +38,7 @@ export const Wrapper = styled("div", {
 });
 
 export const Edge = styled("div", {
-  flexGrow: 1,
-  flexBasis: 0,
-  alignSelf: "auto",
+  flexBasis: "500px",
 
   display: "flex",
   flexDirection: "row",
@@ -64,9 +62,7 @@ export const Edge = styled("div", {
 });
 
 export const Center = styled("div", {
-  flexGrow: 1,
-  flexBasis: 0,
-  alignSelf: "auto",
+  alignSelf: "center",
   textAlign: "center",
 
   display: "flex",
