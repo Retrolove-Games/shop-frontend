@@ -1,8 +1,10 @@
 html body {
   background-color: white;
-  transition: background .1s ease-in;
+  transition: background .1s ease-in, color .1s ease-in;
+  color: #E93750;
 }
 
 html[data-theme="dark"] body {
   background-color: #252220;
+  color: #7FD4CA;
 }
