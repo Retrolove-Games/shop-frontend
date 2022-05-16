@@ -1,4 +1,10 @@
-import { styled, darkTheme, keyframes } from "@retrolove-games/ui-themes";
+import { styled, darkTheme } from "@retrolove-games/ui-themes";
+
+export const Header = styled("div", {
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+});
 
 export const Wrapper = styled("div", {
   background: "$whiteDefault",
@@ -6,22 +12,22 @@ export const Wrapper = styled("div", {
   position: "fixed",
   left: "0",
   top: "0",
-  zIndex: 0,
 
   height: "100vh",
   width: "100%",
 
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   flexWrap: "nowrap",
-  justifyContent: "center",
-  alignContent: "center",
-  alignItems: "center",
+  justifyContent: "flex-start",
+  alignContent: "stretch",
+  alignItems: "flex-start",
 
-  transition: "0.6s cubic-bezier(0.175, 0.885, 0.320, 1.275)",
-  transform: "rotateY(-70deg)",
-  transformOrigin: "left",
-  opacity: 0,
+  padding: "$md",
+
+  transition: "transform 0.35s ease-out",
+  transform: "translate3d(-100%, 0, 0)",
+  zIndex: 6,
 
   /**
    * Themes
@@ -34,10 +40,8 @@ export const Wrapper = styled("div", {
    * States
    */
   "&[aria-expanded='true']": {
-    transform: "rotateY(0)",
-    transformOrigin: "left",
-    opacity: 1,
-    zIndex: 6,
+    transform: "translate3d(0, 0, 0)",
+
   },
 
   /**

@@ -3,7 +3,6 @@ import {
   MOBILE_NAVBAR_HEIGHT,
   DESKTOP_NAVBAR_HEIGHT,
   DESKTOP_MENU_WIDTH,
-  MIN_DESKTOP_MENU_WIDTH
 } from "@src/constants/layout";
 
 export const Container = styled("main", {
@@ -40,18 +39,12 @@ export const Wrapper = styled("div", {
         paddingTop: DESKTOP_NAVBAR_HEIGHT,
         paddingLeft: "$md",
         paddingRight: "$md",
-
-        // Container
-        [`& ${Container}`]: {
-          background: "Green",
-        },
       },
       desktop: {
         // Container
         [`& ${Container}`]: {
           width: "100%",
           maxWidth: `calc(100% - ${DESKTOP_MENU_WIDTH})`,
-          background: "Red",
         },
       },
       largeDesktop: {
@@ -60,7 +53,6 @@ export const Wrapper = styled("div", {
         // Container
         [`& ${Container}`]: {
           maxWidth: `calc(100% - ${DESKTOP_MENU_WIDTH} * 2)`,
-          background: "Yellow",
         },
       },
     },
