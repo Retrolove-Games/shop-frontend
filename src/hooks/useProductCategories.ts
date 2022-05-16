@@ -4,22 +4,22 @@ type Node = {
   name: string;
   slug: string;
   wpChildren: {
-    nodes: Node[]
-  }
-}
+    nodes: Node[];
+  };
+};
 
 type Data = {
   allWpProductCategory: {
-    nodes: Node[]
-  }
-}
+    nodes: Node[];
+  };
+};
 
 export const useProductCategories = () => {
   const data = useStaticQuery<Data>(
     graphql`
       {
         allWpProductCategory(
-          filter: { parentId: { eq: null } }
+          filter: { parentId: { eq: null }, slug: { ne: "uncategorized" } }
           sort: { fields: menuOrder, order: DESC }
         ) {
           nodes {
