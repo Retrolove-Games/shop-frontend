@@ -1,6 +1,6 @@
 import React from "react";
 import { useId } from "react-id-generator";
-import { Wrapper, Header } from "./SidebarMobile.styles";
+import { Wrapper, HeaderWrapper, MenuWrapper } from "./SidebarMobile.styles";
 import { Label } from "@retrolove-games/ui-label";
 import { LabelGroup } from "@retrolove-games/ui-label-group";
 import {
@@ -9,6 +9,7 @@ import {
   CloseButton,
   SearchButton,
 } from "@components/Button";
+import { SlidingMenu } from "@components/SlidingMenu";
 import type { ComponentProps } from "./Sidebar.types";
 
 type ComponentType = React.VFC<ComponentProps>;
@@ -22,17 +23,23 @@ export const SidebarMobile: ComponentType = ({
 
   return (
     <Wrapper aria-expanded={expanded} {...props}>
-      <Header>
+      <HeaderWrapper>
         <CloseButton clickHandler={onClose} />
         <LabelGroup as={"div"}>
           <LabelGroup.left>
-            <SearchButton id={buttonId} clickHandler={() => console.log("aa")} />
+            <Label htmlFor={buttonId}>Szukaj</Label>
           </LabelGroup.left>
           <LabelGroup.right>
-            <Label htmlFor={buttonId}>Szukaj</Label>
+            <SearchButton
+              id={buttonId}
+              clickHandler={() => console.log("aa")}
+            />
           </LabelGroup.right>
         </LabelGroup>
-      </Header>
+      </HeaderWrapper>
+      <MenuWrapper>
+        <SlidingMenu />
+      </MenuWrapper>
     </Wrapper>
   );
 };

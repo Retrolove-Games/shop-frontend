@@ -1,9 +1,14 @@
 import { styled, darkTheme } from "@retrolove-games/ui-themes";
 
-export const Header = styled("div", {
+export const HeaderWrapper = styled("div", {
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
+});
+
+export const  MenuWrapper = styled("div", {
+  width: "100%",
+  paddingTop: "$xl",
 });
 
 export const Wrapper = styled("div", {

@@ -1,7 +1,45 @@
 import { styled, darkTheme } from "@retrolove-games/ui-themes";
 import { DESKTOP_MENU_WIDTH, DESKTOP_NAVBAR_HEIGHT, MIN_DESKTOP_MENU_WIDTH } from "@src/constants/layout";
 
+export const HeaderWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+
+  height: DESKTOP_NAVBAR_HEIGHT,
+});
+
+export const MenuWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  flexGrow: 1,
+
+  "& > *": {
+    width: "100%",
+    maxWidth: "350px",
+  },
+
+  /**
+   * Variants
+   */
+  variants: {
+    layout: {
+      "smallDesktop": {
+        paddingTop: "$lg",
+      },
+      "desktop": {
+        paddingTop: "$xl",
+      },
+    },
+  },
+});
+
+
 export const Wrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+
   background: "$whiteDefault",
   borderRight: "solid 1px $redDefault",
 
@@ -41,12 +79,4 @@ export const Wrapper = styled("div", {
   variants: {
     size: {},
   },
-});
-
-export const Header = styled("div", {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-
-  height: DESKTOP_NAVBAR_HEIGHT,
 });

@@ -194,7 +194,7 @@ const PreviewPage = () => {
         </div>
         <h1>test</h1>
         <pre>
-          {JSON.stringify(data.nodes[0].slug, null, 4)} {String(data)}
+          {JSON.stringify(data, null, 4)} {String(data)}
         </pre>
       </SidebarLayout>
     </>
