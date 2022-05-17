@@ -14,6 +14,10 @@ Gatsby based frontend for e-commerce.
 
 This project uses TypeScript. Please follow [Gatsby notes](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/) on how to use it.
 
+## Snippets
+
+* [RWD](snippets/rwd.md)
+
 ## Additional notes
 
 * Please remember to run `gatsby clean` before switching `npm run develop` and `npm run develop:public` 😅
