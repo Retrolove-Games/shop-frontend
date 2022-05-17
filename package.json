@@ -30,6 +30,7 @@
     "@retrolove-games/ui-label-group": "file:../web-ui/packages/label-group",
     "@retrolove-games/ui-logo": "file:../web-ui/packages/logo",
     "@retrolove-games/ui-lozenge": "file:../web-ui/packages/lozenge",
+    "@retrolove-games/ui-menu": "file:../web-ui/packages/menu",
     "@retrolove-games/ui-switch": "file:../web-ui/packages/switch",
     "@retrolove-games/ui-themes": "file:../web-ui/packages/themes",
     "@retrolove-games/ui-toolbox": "file:../web-ui/packages/toolbox",
