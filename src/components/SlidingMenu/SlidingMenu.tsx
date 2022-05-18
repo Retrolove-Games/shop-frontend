@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Wrapper } from "./SlidingMenu.styles";
-import { Menu, MenuItem, SubMenu } from "@retrolove-games/ui-menu";
+import { Menu, MenuItem, SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
 import { Link } from "gatsby";
 
 type ComponentProps = {};
@@ -16,8 +16,45 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
         <MenuItem>
           <button onClick={() => setExpanded(!expanded)}>Test</button>
           <SubMenu isExpanded={expanded}>
-            <Link to="/test/preview">Preview</Link>
-            <Link to="/">Index</Link>
+            <SubMenuItem>
+              <Link to="/test/preview">Preview</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
+            <SubMenuItem>
+              <Link to="/">Index 2</Link>
+            </SubMenuItem>
           </SubMenu>
         </MenuItem>
         <MenuItem>
