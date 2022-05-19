@@ -22,6 +22,7 @@ import { Label } from "@retrolove-games/ui-label";
 import { Link } from "gatsby";
 import { SidebarLayout } from "@components/Layout";
 import { useProductCategories } from "@src/hooks/useProductCategories";
+import { useHeaderMenu } from "@src/hooks/useHeaderMenu";
 
 // markup
 const PreviewPage = () => {
@@ -29,7 +30,7 @@ const PreviewPage = () => {
   const { isSidebarOpened, toggleSidebar } = useSidebar();
   const [count, setCount] = React.useState(0);
   const [test, setTest] = React.useState("Cholibka");
-  const data = useProductCategories();
+  const data = useHeaderMenu();
 
   return (
     <>
@@ -195,6 +196,7 @@ const PreviewPage = () => {
         <h1>test</h1>
         <pre>
           {JSON.stringify(data, null, 4)} {String(data)}
+          {data.nodes[0].id}
         </pre>
       </SidebarLayout>
     </>

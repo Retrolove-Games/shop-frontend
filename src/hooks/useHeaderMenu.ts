@@ -1,17 +1,18 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-type Node = {
+export type MenuItemNode = {
   id: string;
-  name: string;
+  label: string;
   slug: string;
+  path: string;
   childItems: {
-    nodes: Node[];
+    nodes: MenuItemNode[];
   };
 };
 
 type Data = {
   allWpMenuItem: {
-    nodes: Node[];
+    nodes: MenuItemNode[];
   };
 };
 
