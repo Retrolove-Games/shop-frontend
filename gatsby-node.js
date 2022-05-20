@@ -7,6 +7,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         "@src": path.resolve(__dirname, "src"),
         "@static": path.resolve(__dirname, "static"),
         "@hooks": path.resolve(__dirname, "src/hooks"),
+        "@store": path.resolve(__dirname, "src/store"),
       }
     }
   });

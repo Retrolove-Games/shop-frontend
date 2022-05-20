@@ -20,6 +20,13 @@ export const appStateReducer = (
       }
     }
 
+    case "TOGGLE_SIDEBAR": {
+      return {
+        ...state,
+        isSidebarOpened: !state.isSidebarOpened
+      }
+    }
+
     default:
       throw new Error("Mssing dispatcher action.");
   }

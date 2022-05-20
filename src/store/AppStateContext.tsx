@@ -12,6 +12,7 @@ type AppStateContextProps = {
   currentItem: string;
   currentSubItem: string;
   parentElement: string;
+  isSidebarOpened: boolean;
   dispatch: Dispatch<Action>;
 };
 
@@ -20,6 +21,7 @@ export type AppState = {
   currentItem: string;
   currentSubItem: string;
   parentElement: string;
+  isSidebarOpened: boolean;
 };
 
 const initialState: AppState = {
@@ -27,6 +29,7 @@ const initialState: AppState = {
   currentItem: "",
   currentSubItem: "",
   parentElement: "",
+  isSidebarOpened: false,
 };
 
 const AppStateContext = createContext<AppStateContextProps>(

@@ -1,12 +1,17 @@
 import React from "react";
-import { useSidebar } from "@src/store/SidebarContext";
 import { Header } from "@components/Header";
 import { Background } from "@components/Background";
 import { Sidebar } from "@components/Sidebar";
 import { Wrapper, Container } from "./SidebarLayout.styles";
+import { useAppState } from "@src/store/AppStateContext";
 
 export const SidebarLayout: React.FC = ({ children }) => {
-  const { isSidebarOpened, toggleSidebar } = useSidebar();
+  // const { isSidebarOpened, toggleSidebar } = useSidebar();
+  const { isSidebarOpened, dispatch } = useAppState();
+
+  const toggleSidebar = () => {
+    dispatch({type: "TOGGLE_SIDEBAR"});
+  }
 
   return (
     <>

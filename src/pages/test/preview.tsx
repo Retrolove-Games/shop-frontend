@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button } from "@retrolove-games/ui-button";
 import { LogoDesktop, LogoMobile } from "@retrolove-games/ui-logo";
 import { useTheme } from "@src/store/ThemeContext";
-import { useSidebar } from "@src/store/SidebarContext";
 // @ts-ignore
 import { Media } from "gatsby-plugin-fresnel";
 import {
@@ -23,11 +22,13 @@ import { Link } from "gatsby";
 import { SidebarLayout } from "@components/Layout";
 import { useProductCategories } from "@src/hooks/useProductCategories";
 import { useHeaderMenu } from "@src/hooks/useHeaderMenu";
+import { useAppState } from "@src/store/AppStateContext";
+import { toggleSidebar } from "@store/actions/actions";
 
 // markup
 const PreviewPage = () => {
   const theme = useTheme();
-  const { isSidebarOpened, toggleSidebar } = useSidebar();
+  const { isSidebarOpened, dispatch } = useAppState();
   const [count, setCount] = React.useState(0);
   const [test, setTest] = React.useState("Cholibka");
   const data = useHeaderMenu();
