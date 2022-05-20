@@ -4,8 +4,8 @@ import { Menu, MenuItem, SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
 import { FirstSubMenu } from "./FirstSubMenu";
 import { Link } from "gatsby";
 import { useHeaderMenu } from "@hooks/useHeaderMenu";
-import { useMenuState } from "@src/context/MenuContext";
-import { setMenuLevel } from "@src/context/MenuContextActions";
+import { useAppState } from "@src/store/AppStateContext";
+import { setMenuLevel } from "@src/store/actions/actions";
 
 type ComponentProps = {};
 
@@ -15,7 +15,7 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
   const [expanded, setExpanded] = useState(false);
   const { nodes: menuItems } = useHeaderMenu();
   const { menuLevel, currentItem, currentSubItem, parentElement, dispatch } =
-    useMenuState();
+    useAppState();
 
   return (
     <Wrapper {...props}>

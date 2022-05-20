@@ -2,8 +2,8 @@
 import * as React from "react";
 import { Button } from "@retrolove-games/ui-button";
 import { LogoDesktop, LogoMobile } from "@retrolove-games/ui-logo";
-import { useTheme } from "../../context/ThemeContext";
-import { useSidebar } from "../../context/SidebarContext";
+import { useTheme } from "@src/store/ThemeContext";
+import { useSidebar } from "@src/store/SidebarContext";
 // @ts-ignore
 import { Media } from "gatsby-plugin-fresnel";
 import {

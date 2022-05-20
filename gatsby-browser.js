@@ -1,16 +1,16 @@
 import React from "react";
-import { ThemeProvider } from "./src/context/ThemeContext";
-import { SidebarProvider } from "./src/context/SidebarContext";
-import { MenuStateProvider } from "./src/context/MenuContext";
+import { ThemeProvider } from "./src/store/ThemeContext";
+import { SidebarProvider } from "./src/store/SidebarContext";
+import { AppStateProvider } from "./src/store/AppStateContext";
 import "@retrolove-games/css-reset";
 import "./src/styles/global.css";
 
 export const wrapRootElement = ({ element }) => (
   <SidebarProvider>
     <ThemeProvider>
-      <MenuStateProvider>
+      <AppStateProvider>
         {element}
-      </MenuStateProvider>
+      </AppStateProvider>
     </ThemeProvider>
   </SidebarProvider>
 );

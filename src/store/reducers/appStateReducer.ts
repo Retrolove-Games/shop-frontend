@@ -1,10 +1,10 @@
-import { MenuState } from "./MenuContext";
-import { Action } from "./MenuContextActions";
+import { AppState } from "../AppStateContext";
+import { Action } from "../actions/actions";
 
-export const menuStateReducer = (
-  state: MenuState,
+export const appStateReducer = (
+  state: AppState,
   action: Action
-): MenuState => {
+): AppState => {
   switch(action.type) {
     case "SET_MENU_LEVEL": {
       return {

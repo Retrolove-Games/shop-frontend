@@ -1,5 +1,5 @@
 import React from "react";
-import { useSidebar } from "../../context/SidebarContext";
+import { useSidebar } from "@src/store/SidebarContext";
 import { Header } from "@components/Header";
 import { Background } from "@components/Background";
 import { Sidebar } from "@components/Sidebar";

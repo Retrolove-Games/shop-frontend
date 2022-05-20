@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./Header.styles";
 import { NavbarMobile, NavbarDesktop } from "@components/Navbar";
-import { useSidebar } from "@src/context/SidebarContext";
+import { useSidebar } from "@src/store/SidebarContext";
 import { MobileDesktop } from "@components/Utils";
 
 type ComponentProps = {};

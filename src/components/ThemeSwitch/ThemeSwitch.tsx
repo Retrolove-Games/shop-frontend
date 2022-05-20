@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch } from "@retrolove-games/ui-switch";
 import { IconMoon, IconSun } from "@retrolove-games/ui-icon";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@src/store/ThemeContext";
 
 type ComponentProps = {
   id: string;
