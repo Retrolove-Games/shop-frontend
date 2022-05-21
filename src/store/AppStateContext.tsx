@@ -7,28 +7,23 @@ import React, {
 import { Action } from "./actions/actions";
 import { appStateReducer } from "./reducers/appStateReducer";
 
-type AppStateContextProps = {
-  menuLevel: number;
-  currentItem: string;
-  currentSubItem: string;
-  parentElement: string;
-  isSidebarOpened: boolean;
-  dispatch: Dispatch<Action>;
-};
-
 export type AppState = {
   menuLevel: number;
-  currentItem: string;
-  currentSubItem: string;
-  parentElement: string;
+  currentMenuItem: string;
+  currentMenuSubItem: string;
+  parentMenuLabel: string;
   isSidebarOpened: boolean;
+};
+
+type AppStateContextProps= AppState & {
+  dispatch: Dispatch<Action>;
 };
 
 const initialState: AppState = {
   menuLevel: 0,
-  currentItem: "",
-  currentSubItem: "",
-  parentElement: "",
+  currentMenuItem: "",
+  currentMenuSubItem: "",
+  parentMenuLabel: "",
   isSidebarOpened: false,
 };
 

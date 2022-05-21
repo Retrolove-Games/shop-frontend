@@ -13,10 +13,17 @@ export const appStateReducer = (
       }
     }
 
-    case "SET_CURRENT_ITEM": {
+    case "SET_CURRENT_MENU_ITEM": {
       return {
         ...state,
-        currentItem: action.payload
+        currentMenuItem: action.payload
+      }
+    }
+
+    case "SET_CURRENT_MENU_SUB_ITEM": {
+      return {
+        ...state,
+        currentMenuSubItem: action.payload
       }
     }
 
@@ -24,6 +31,13 @@ export const appStateReducer = (
       return {
         ...state,
         isSidebarOpened: !state.isSidebarOpened
+      }
+    }
+
+    case "SET_PARENT_MENU_LABEL": {
+      return {
+        ...state,
+        parentMenuLabel: action.payload
       }
     }
 

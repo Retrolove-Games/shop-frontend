@@ -2,55 +2,49 @@ import React, { useState } from "react";
 import { Wrapper } from "./SlidingMenu.styles";
 import { Menu, MenuItem, SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
 import { FirstSubMenu } from "./FirstSubMenu";
-import { Link } from "gatsby";
 import { useHeaderMenu } from "@hooks/useHeaderMenu";
 import { useAppState } from "@src/store/AppStateContext";
-import { setMenuLevel } from "@src/store/actions/actions";
+import { setMenuLevel, setCurrentMenuItem } from "@src/store/actions/actions";
 
 type ComponentProps = {};
 
 type ComponentType = React.VFC<ComponentProps>;
 
 export const SlidingMenu: ComponentType = ({ ...props }) => {
-  const [expanded, setExpanded] = useState(false);
   const { nodes: menuItems } = useHeaderMenu();
-  const { menuLevel, currentItem, currentSubItem, parentElement, dispatch } =
-    useAppState();
+  const { menuLevel, currentMenuItem, currentMenuSubItem, parentMenuLabel, dispatch } = useAppState();
+
+  // First level click
+  const handleClick = (id: string) => {
+    if (currentMenuItem !== id) {
+      dispatch(setCurrentMenuItem(id));
+    } else {
+      dispatch(setCurrentMenuItem(""));
+    }
+  };
 
   return (
     <Wrapper {...props}>
-      <Menu>
+      <Menu level={menuLevel}>
         {menuItems.map((item) => (
           <MenuItem key={item.id}>
-            <button>{item.label}</button>
-            <FirstSubMenu items={item.childItems.nodes} isExpanded={true} />
+            <button onClick={() => handleClick(item.id)}>{item.label}</button>
+            <FirstSubMenu
+              items={item.childItems.nodes}
+              isExpanded={currentMenuItem === item.id}
+            />
           </MenuItem>
         ))}
-        <MenuItem>
-          <button onClick={() => {
-            setExpanded(!expanded);
-            dispatch(setMenuLevel(menuLevel + 1));
-          }}>Konsole</button>
-          <SubMenu isExpanded={expanded}>
-            <SubMenuItem>
-              <Link to="/test/preview">Nintendo</Link>
-            </SubMenuItem>
-            <SubMenuItem>
-              <Link to="/">Sega</Link>
-            </SubMenuItem>
-            <SubMenuItem>
-              <Link to="/">Commodore</Link>
-            </SubMenuItem>
-            <SubMenuItem>
-              <Link to="/">Neo Geo</Link>
-            </SubMenuItem>
-          </SubMenu>
-        </MenuItem>
-        <MenuItem>
-          <a href="#">Zażółć gęslą jaźń</a>
-        </MenuItem>
       </Menu>
-      <pre>{menuLevel}</pre>
+      <pre>
+        {menuLevel}
+        <br />
+        {currentMenuItem}
+        <br />
+        {currentMenuSubItem}
+        <br />
+        {parentMenuLabel}
+      </pre>
     </Wrapper>
   );
 };
