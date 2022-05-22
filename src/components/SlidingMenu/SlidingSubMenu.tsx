@@ -23,15 +23,14 @@ export const SlidingSubMenu: ComponentType = ({
   items,
   parentLabel,
   level,
-  onReturn
+  onReturn,
 }) => {
   return (
     <SlidingSubMenuWrapper level={level} isHidden={isHidden}>
       <li>{parentLabel}</li>
       {items.map((item) => (
         <SubMenuItem key={item.id}>
-          {/*<Link to={item.path}>{item.label}</Link>*/}
-          <button>{item.label}</button>
+          <Link to={item.path}>{item.label}</Link>
         </SubMenuItem>
       ))}
       <li>

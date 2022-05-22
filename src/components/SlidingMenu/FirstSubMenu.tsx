@@ -1,5 +1,5 @@
 import React from "react";
-import { SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
+import { SubMenu, SubMenuItem, SubElement } from "@retrolove-games/ui-menu";
 import { Link } from "gatsby";
 import { SlidingSubMenu } from "./SlidingSubMenu";
 import {
@@ -21,7 +21,15 @@ type ComponentType = React.VFC<ComponentProps>;
 export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
   const { currentMenuSubItem, parentMenuLabel, dispatch } = useAppState();
 
-  const handleClick = (id: string, label: string) => {
+  const handleClick = ({
+    id,
+    label,
+    path,
+  }: {
+    id: string;
+    label: string;
+    path: string;
+  }) => {
     dispatch(setMenuLevel(1));
     dispatch(setCurrentMenuSubItem(id));
     dispatch(setParentMenuLabel(label));
@@ -42,9 +50,9 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
               if (hasSubItems) {
                 return (
                   <>
-                    <Link to={item.path} onClick={() => handleClick(item.id, item.label)}>
+                    <SubElement onClick={() => handleClick(item)}>
                       {item.label}
-                    </Link>
+                    </SubElement>
                     <SlidingSubMenu
                       isHidden={currentMenuSubItem !== item.id}
                       parentLabel={parentMenuLabel}
