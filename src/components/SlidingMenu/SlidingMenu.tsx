@@ -59,15 +59,6 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
           );
         })}
       </Menu>
-      <pre>
-        {menuLevel}
-        <br />
-        {currentMenuItem}
-        <br />
-        {currentMenuSubItem}
-        <br />
-        {parentMenuLabel}
-      </pre>
     </Wrapper>
   );
 };
