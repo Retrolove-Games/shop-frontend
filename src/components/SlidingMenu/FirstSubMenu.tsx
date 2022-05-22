@@ -29,25 +29,38 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
 
   const handleReturn = () => {
     dispatch(setMenuLevel(0));
-  }
+  };
 
   return (
     <SubMenu isExpanded={isExpanded}>
-      {items.map((item) => (
-        <SubMenuItem key={item.id}>
-          {/*<Link to={item.path}>{item.label}</Link>*/}
-          <button onClick={() => handleClick(item.id, item.label)}>
-            {item.label}
-          </button>
-          <SlidingSubMenu
-            isHidden={currentMenuSubItem !== item.id}
-            parentLabel={parentMenuLabel}
-            items={item.childItems.nodes}
-            level={1}
-            onReturn={handleReturn}
-          />
-        </SubMenuItem>
-      ))}
+      {items.map((item) => {
+        const hasSubItems = item.childItems.nodes.length > 0;
+
+        return (
+          <SubMenuItem key={item.id}>
+            {(function () {
+              if (hasSubItems) {
+                return (
+                  <>
+                    <Link to={item.path} onClick={() => handleClick(item.id, item.label)}>
+                      {item.label}
+                    </Link>
+                    <SlidingSubMenu
+                      isHidden={currentMenuSubItem !== item.id}
+                      parentLabel={parentMenuLabel}
+                      items={item.childItems.nodes}
+                      level={1}
+                      onReturn={handleReturn}
+                    />
+                  </>
+                );
+              } else {
+                return <Link to={item.path}>{item.label}</Link>;
+              }
+            })()}
+          </SubMenuItem>
+        );
+      })}
     </SubMenu>
   );
 };

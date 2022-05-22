@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Wrapper } from "./SlidingMenu.styles";
-import { Menu, MenuItem, SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
+import { Menu, MenuItem, RootElement } from "@retrolove-games/ui-menu";
 import { FirstSubMenu } from "./FirstSubMenu";
 import { useHeaderMenu } from "@hooks/useHeaderMenu";
 import { useAppState } from "@src/store/AppStateContext";
-import { setMenuLevel, setCurrentMenuItem } from "@src/store/actions/actions";
+import { setCurrentMenuItem } from "@src/store/actions/actions";
+import { Link } from "gatsby";
 
 type ComponentProps = {};
 
@@ -12,7 +13,13 @@ type ComponentType = React.VFC<ComponentProps>;
 
 export const SlidingMenu: ComponentType = ({ ...props }) => {
   const { nodes: menuItems } = useHeaderMenu();
-  const { menuLevel, currentMenuItem, currentMenuSubItem, parentMenuLabel, dispatch } = useAppState();
+  const {
+    menuLevel,
+    currentMenuItem,
+    currentMenuSubItem,
+    parentMenuLabel,
+    dispatch,
+  } = useAppState();
 
   // First level click
   const handleClick = (id: string) => {
@@ -26,15 +33,31 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
   return (
     <Wrapper {...props}>
       <Menu level={menuLevel}>
-        {menuItems.map((item) => (
-          <MenuItem key={item.id}>
-            <button onClick={() => handleClick(item.id)}>{item.label}</button>
-            <FirstSubMenu
-              items={item.childItems.nodes}
-              isExpanded={currentMenuItem === item.id}
-            />
-          </MenuItem>
-        ))}
+        {menuItems.map((item) => {
+          const hasSubItems = item.childItems.nodes.length > 0;
+
+          return (
+            <MenuItem key={item.id}>
+              {(function () {
+                if (hasSubItems) {
+                  return (
+                    <>
+                      <RootElement onClick={() => handleClick(item.id)}>
+                        {item.label}
+                      </RootElement>
+                      <FirstSubMenu
+                        items={item.childItems.nodes}
+                        isExpanded={currentMenuItem === item.id}
+                      />
+                    </>
+                  );
+                } else {
+                  return <Link to={item.path}>{item.label}</Link>;
+                }
+              })()}
+            </MenuItem>
+          );
+        })}
       </Menu>
       <pre>
         {menuLevel}

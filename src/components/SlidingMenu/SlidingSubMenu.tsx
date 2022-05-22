@@ -5,6 +5,7 @@ import {
 } from "@retrolove-games/ui-menu";
 import { Button } from "@retrolove-games/ui-button";
 import { Link } from "gatsby";
+import { IconReturn } from "@retrolove-games/ui-icon";
 import type { MenuItemNode } from "@hooks/useHeaderMenu";
 
 type ComponentProps = {
@@ -35,7 +36,7 @@ export const SlidingSubMenu: ComponentType = ({
       ))}
       <li>
         <Button onClick={onReturn} size="medium" shouldFitContainer>
-          Powrót
+          <IconReturn size="xsmall" /> Powrót
         </Button>
       </li>
     </SlidingSubMenuWrapper>
