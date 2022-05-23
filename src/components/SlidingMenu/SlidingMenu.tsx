@@ -4,7 +4,7 @@ import {
   Menu,
   MenuItem,
   RootElement,
-  SubMenuFooter,
+  MenuFooter,
 } from "@retrolove-games/ui-menu";
 import { Button } from "@retrolove-games/ui-button";
 import { IconReturn } from "@retrolove-games/ui-icon";
@@ -72,7 +72,7 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
           );
         })}
         {!isHome && (
-          <SubMenuFooter>
+          <MenuFooter>
             <Button
               onClick={handleReturnHome}
               size="medium"
@@ -81,7 +81,7 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
             >
               Powrót
             </Button>
-          </SubMenuFooter>
+          </MenuFooter>
         )}
       </Menu>
     </Wrapper>
