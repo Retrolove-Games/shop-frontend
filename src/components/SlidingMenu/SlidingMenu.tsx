@@ -1,11 +1,19 @@
 import React from "react";
 import { Wrapper } from "./SlidingMenu.styles";
-import { Menu, MenuItem, RootElement } from "@retrolove-games/ui-menu";
+import {
+  Menu,
+  MenuItem,
+  RootElement,
+  SubMenuFooter,
+} from "@retrolove-games/ui-menu";
+import { Button } from "@retrolove-games/ui-button";
+import { IconReturn } from "@retrolove-games/ui-icon";
 import { FirstSubMenu } from "./FirstSubMenu";
 import { useHeaderMenu } from "@hooks/useHeaderMenu";
 import { useAppState } from "@src/store/AppStateContext";
 import { setCurrentMenuItem } from "@src/store/actions/actions";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
+import { useIsHome } from "@hooks/useIsHome";
 
 type ComponentProps = {};
 
@@ -13,11 +21,11 @@ type ComponentType = React.VFC<ComponentProps>;
 
 export const SlidingMenu: ComponentType = ({ ...props }) => {
   const { nodes: menuItems } = useHeaderMenu();
+  const isHome = useIsHome();
+
   const {
     menuLevel,
     currentMenuItem,
-    currentMenuSubItem,
-    parentMenuLabel,
     dispatch,
   } = useAppState();
 
@@ -28,6 +36,11 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
     } else {
       dispatch(setCurrentMenuItem(""));
     }
+  };
+
+  const handleReturnHome = async () => {
+    await navigate("/");
+    dispatch(setCurrentMenuItem(""));
   };
 
   return (
@@ -58,6 +71,17 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
             </MenuItem>
           );
         })}
+        {!isHome && (
+          <SubMenuFooter>
+            <Button
+              onClick={handleReturnHome}
+              size="medium"
+              shouldFitContainer
+            >
+              <IconReturn size="xsmall" /> Powrót
+            </Button>
+          </SubMenuFooter>
+        )}
       </Menu>
     </Wrapper>
   );

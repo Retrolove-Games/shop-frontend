@@ -1,6 +1,6 @@
 import React from "react";
-import { SubMenu, SubMenuItem, SubElement } from "@retrolove-games/ui-menu";
-import { Link } from "gatsby";
+import { SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
+import { Link, navigate } from "gatsby";
 import { SlidingSubMenu } from "./SlidingSubMenu";
 import {
   setMenuLevel,
@@ -35,8 +35,9 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
     dispatch(setParentMenuLabel(label));
   };
 
-  const handleReturn = () => {
+  const handleReturn = (previous: string) => {
     dispatch(setMenuLevel(0));
+    navigate(previous);
   };
 
   return (
@@ -50,13 +51,15 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
               if (hasSubItems) {
                 return (
                   <>
-                    <Link to={item.path} onClick={() => handleClick(item)}>{item.label}</Link>
+                    <Link to={item.path} onClick={() => handleClick(item)}>
+                      {item.label}
+                    </Link>
                     <SlidingSubMenu
                       isHidden={currentMenuSubItem !== item.id}
                       parentLabel={parentMenuLabel}
                       items={item.childItems.nodes}
                       level={1}
-                      onReturn={handleReturn}
+                      onReturn={() => handleReturn(item.path)}
                     />
                   </>
                 );
