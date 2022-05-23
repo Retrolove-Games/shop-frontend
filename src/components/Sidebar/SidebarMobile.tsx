@@ -5,6 +5,7 @@ import {
   HeaderWrapper,
   MenuWrapper,
   InnerContainer,
+  FooterWrapper,
 } from "./SidebarMobile.styles";
 import { Label } from "@retrolove-games/ui-label";
 import { LabelGroup } from "@retrolove-games/ui-label-group";
@@ -14,8 +15,10 @@ import {
   CloseButton,
   SearchButton,
 } from "@components/Button";
+import { ThemeSwitch } from "@components/ThemeSwitch";
 import { SlidingMenu } from "@components/SlidingMenu";
 import type { ComponentProps } from "./Sidebar.types";
+import { Toolbox } from "@retrolove-games/ui-toolbox";
 
 type ComponentType = React.VFC<ComponentProps>;
 
@@ -46,6 +49,15 @@ export const SidebarMobile: ComponentType = ({
         <MenuWrapper>
           <SlidingMenu />
         </MenuWrapper>
+        <FooterWrapper>
+          <Toolbox spacing={"md"}>
+            <FacebookButton />
+            <TwitterButton />
+          </Toolbox>
+          <div>
+            <ThemeSwitch id="mobile-theme-switch" />
+          </div>
+        </FooterWrapper>
       </InnerContainer>
     </Wrapper>
   );

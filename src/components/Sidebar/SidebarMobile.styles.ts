@@ -6,9 +6,16 @@ export const HeaderWrapper = styled("div", {
   justifyContent: "space-between",
 });
 
-export const  MenuWrapper = styled("div", {
+export const MenuWrapper = styled("div", {
   width: "100%",
   paddingTop: "$xl",
+  flexGrow: "1",
+});
+
+export const FooterWrapper = styled("div", {
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
 });
 
 export const InnerContainer = styled("div", {
