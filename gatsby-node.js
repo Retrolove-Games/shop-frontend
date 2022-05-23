@@ -3,17 +3,9 @@ const queries = require("./queries");
 
 /**
  * Create pages for Gatsby.
- * @param {*} param0
  */
 exports.createPages = async (gatsbyUtilities) => {
   const data = await getData(gatsbyUtilities);
-
-  /* if (!data.length) {
-    return;
-  } */
-
-
-  console.log(JSON.stringify(data, null, 4));
 
   // Create category pages
   await createCategoryPages(
@@ -22,6 +14,9 @@ exports.createPages = async (gatsbyUtilities) => {
   );
 };
 
+/**
+ * Create category pages.
+ */
 const createCategoryPages = async (categories, gatsbyUtilities) =>
   Promise.all(
     categories.map((category) => {
@@ -39,7 +34,6 @@ const createCategoryPages = async (categories, gatsbyUtilities) =>
 
 /**
  * Gather GraphQl data for page construction.
- * @param {*} param0
  */
 async function getData({ graphql, reporter }) {
   const graphqlResult = await graphql(`
