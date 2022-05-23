@@ -34,6 +34,18 @@ export const MenuWrapper = styled("div", {
   },
 });
 
+export const ToolsWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: DESKTOP_NAVBAR_HEIGHT,
+
+  "& > *": {
+    width: "100%",
+    maxWidth: "350px",
+  },
+});
+
 
 export const Wrapper = styled("div", {
   display: "flex",

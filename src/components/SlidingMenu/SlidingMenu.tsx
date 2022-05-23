@@ -76,9 +76,10 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
             <Button
               onClick={handleReturnHome}
               size="medium"
+              leftElement={<IconReturn size="xsmall" />}
               shouldFitContainer
             >
-              <IconReturn size="xsmall" /> Powrót
+              Powrót
             </Button>
           </SubMenuFooter>
         )}
