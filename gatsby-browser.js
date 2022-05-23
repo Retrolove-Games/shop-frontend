@@ -8,7 +8,9 @@ import "./src/styles/global.css";
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider>
     <AppStateProvider>
-      <SidebarLayout>{element}</SidebarLayout>
+      <gatsby>
+        <SidebarLayout>{element}</SidebarLayout>
+      </gatsby>
     </AppStateProvider>
   </ThemeProvider>
 );

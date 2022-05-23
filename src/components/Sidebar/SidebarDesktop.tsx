@@ -30,5 +30,8 @@ export const SidebarDesktop: ComponentType = ({
     }}>
       <SlidingMenu />
     </MenuWrapper>
+    <div>
+      aaa
+    </div>
   </Wrapper>
 );
