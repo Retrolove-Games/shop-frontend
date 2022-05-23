@@ -1,13 +1,19 @@
 import * as React from "react";
-import { SidebarLayout } from "@components/Layout";
+import type { PageProps } from "gatsby";
 
-const CategoryTemplate = () => {
+type CategoryPageContext = {
+  id: string;
+  slug: string;
+  name: string;
+};
+type CategoryPageProps = PageProps<{}, CategoryPageContext>;
 
+const CategoryTemplate = ({ pageContext }: CategoryPageProps) => {
   return (
-    <SidebarLayout>
-      <h1>Content</h1>
-    </SidebarLayout>
+    <>
+      <h1>{pageContext.name}</h1>
+    </>
   );
-}
+};
 
 export default CategoryTemplate;

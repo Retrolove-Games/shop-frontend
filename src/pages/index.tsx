@@ -4,9 +4,11 @@ import { SidebarLayout } from "@components/Layout";
 const IndexPage = () => {
 
   return (
-    <SidebarLayout>
+    <>
+    {/*<SidebarLayout>*/}
       <h1>Content</h1>
-    </SidebarLayout>
+    {/*</SidebarLayout>*/}
+    </>
   );
 }
 

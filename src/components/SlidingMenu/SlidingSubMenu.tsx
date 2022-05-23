@@ -3,7 +3,7 @@ import {
   SlidingSubMenu as SlidingSubMenuWrapper,
   SubMenuItem,
   SubMenuLabel,
-  SubMenuFooter
+  SubMenuFooter,
 } from "@retrolove-games/ui-menu";
 import { Button } from "@retrolove-games/ui-button";
 import { Link } from "gatsby";
@@ -29,9 +29,7 @@ export const SlidingSubMenu: ComponentType = ({
 }) => {
   return (
     <SlidingSubMenuWrapper level={level} isHidden={isHidden}>
-      <SubMenuLabel>
-        {parentLabel}
-      </SubMenuLabel>
+      <SubMenuLabel>{parentLabel}</SubMenuLabel>
       {items.map((item) => (
         <SubMenuItem key={item.id}>
           <Link to={item.path}>{item.label}</Link>

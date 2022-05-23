@@ -50,9 +50,7 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
               if (hasSubItems) {
                 return (
                   <>
-                    <SubElement onClick={() => handleClick(item)}>
-                      {item.label}
-                    </SubElement>
+                    <Link to={item.path} onClick={() => handleClick(item)}>{item.label}</Link>
                     <SlidingSubMenu
                       isHidden={currentMenuSubItem !== item.id}
                       parentLabel={parentMenuLabel}
