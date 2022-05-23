@@ -1,4 +1,5 @@
 import React from "react";
+import { use100vh } from "react-div-100vh";
 import { useId } from "react-id-generator";
 import {
   Wrapper,
@@ -19,6 +20,7 @@ import { ThemeSwitch } from "@components/ThemeSwitch";
 import { SlidingMenu } from "@components/SlidingMenu";
 import type { ComponentProps } from "./Sidebar.types";
 import { Toolbox } from "@retrolove-games/ui-toolbox";
+import type { CSSProperties } from "@stitches/react";
 
 type ComponentType = React.VFC<ComponentProps>;
 
@@ -28,10 +30,13 @@ export const SidebarMobile: ComponentType = ({
   ...props
 }) => {
   const [buttonId] = useId();
+  const height = use100vh();
 
   return (
     <Wrapper aria-expanded={expanded} {...props}>
-      <InnerContainer>
+      <InnerContainer
+        style={{ "--full-height": `${height}px` } as any as CSSProperties}
+      >
         <HeaderWrapper>
           <CloseButton clickHandler={onClose} />
           <LabelGroup as={"div"}>

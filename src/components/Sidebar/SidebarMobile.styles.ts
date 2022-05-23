@@ -21,7 +21,7 @@ export const FooterWrapper = styled("div", {
 export const InnerContainer = styled("div", {
   background: "$whiteDefault",
   width: "85%",
-  minHeight: "100vh",
+  minHeight: "var(--full-height)",
   maxHeight: "100vh",
   overflowY: "auto",
 
@@ -49,7 +49,7 @@ export const Wrapper = styled("div", {
   left: "0",
   top: "0",
 
-  height: "100vh",
+  // height: "100vh",
   width: "100%",
 
   transition: "transform 0.35s ease-in, background 0.15s ease-out",
