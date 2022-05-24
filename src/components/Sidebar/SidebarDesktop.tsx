@@ -39,7 +39,10 @@ export const SidebarDesktop: ComponentType = ({
     >
       <SlidingMenu />
     </MenuWrapper>
-    <ToolsWrapper>
+    <ToolsWrapper layout={{
+      "@xl": "smallDesktop",
+      "@xxl": "desktop",
+    }}>
       <Button leftElement={<IconSearch size={"xsmall"} />} shouldFitContainer>
         Szukaj
       </Button>

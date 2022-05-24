@@ -13,6 +13,7 @@ export const MenuWrapper = styled("div", {
   display: "flex",
   justifyContent: "center",
   flexGrow: 1,
+  overflowY: "auto",
 
   "& > *": {
     width: "100%",
@@ -26,9 +27,11 @@ export const MenuWrapper = styled("div", {
     layout: {
       "smallDesktop": {
         paddingTop: "$lg",
+        paddingLeft: "$md",
       },
       "desktop": {
         paddingTop: "$xl",
+        paddingLeft: "0",
       },
     },
   },
@@ -37,12 +40,31 @@ export const MenuWrapper = styled("div", {
 export const ToolsWrapper = styled("div", {
   display: "flex",
   justifyContent: "center",
-  alignItems: "center",
-  height: DESKTOP_NAVBAR_HEIGHT,
+
+  height: "128px",
+  // border: "solid 1px Yellow",
 
   "& > *": {
     width: "100%",
     maxWidth: "350px",
+  },
+
+  /**
+   * Variants
+   */
+   variants: {
+    layout: {
+      "smallDesktop": {
+        height: DESKTOP_NAVBAR_HEIGHT,
+        alignItems: "center",
+        paddingLeft: "$md",
+      },
+      "desktop": {
+        height: "128px",
+        alignItems: "flex-start",
+        paddingLeft: "0",
+      },
+    },
   },
 });
 
