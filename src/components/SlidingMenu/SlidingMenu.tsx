@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Wrapper } from "./SlidingMenu.styles";
 import {
   Menu,
@@ -19,7 +19,7 @@ type ComponentProps = {};
 
 type ComponentType = React.VFC<ComponentProps>;
 
-export const SlidingMenu: ComponentType = ({ ...props }) => {
+export const SlidingMenu: ComponentType = () => {
   const { nodes: menuItems } = useHeaderMenu();
   const isHome = useIsHome();
 
@@ -30,21 +30,22 @@ export const SlidingMenu: ComponentType = ({ ...props }) => {
   } = useAppState();
 
   // First level click
-  const handleClick = (id: string) => {
+  const handleClick = useCallback((id: string) => {
     if (currentMenuItem !== id) {
       dispatch(setCurrentMenuItem(id));
     } else {
       dispatch(setCurrentMenuItem(""));
     }
-  };
+  }, [currentMenuItem]);
 
-  const handleReturnHome = async () => {
+  // Return to root menu
+  const handleReturnHome = useCallback(async () => {
     await navigate("/");
     dispatch(setCurrentMenuItem(""));
-  };
+  }, []);
 
   return (
-    <Wrapper {...props}>
+    <Wrapper>
       <Menu level={menuLevel}>
         {menuItems.map((item) => {
           const hasSubItems = item.childItems.nodes.length > 0;

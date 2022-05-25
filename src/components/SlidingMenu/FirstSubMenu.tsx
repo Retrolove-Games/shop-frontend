@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { SubMenu, SubMenuItem } from "@retrolove-games/ui-menu";
 import { Link, navigate } from "gatsby";
 import { SlidingSubMenu } from "./SlidingSubMenu";
@@ -21,24 +21,22 @@ type ComponentType = React.VFC<ComponentProps>;
 export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
   const { currentMenuSubItem, parentMenuLabel, dispatch } = useAppState();
 
-  const handleClick = ({
+  const handleClick = useCallback(({
     id,
-    label,
-    path,
+    label
   }: {
     id: string;
     label: string;
-    path: string;
   }) => {
     dispatch(setMenuLevel(1));
     dispatch(setCurrentMenuSubItem(id));
     dispatch(setParentMenuLabel(label));
-  };
+  }, []);
 
-  const handleReturn = (previous: string) => {
+  const handleReturn = useCallback((previous: string) => {
     dispatch(setMenuLevel(0));
     navigate(previous);
-  };
+  }, []);
 
   return (
     <SubMenu isExpanded={isExpanded}>
