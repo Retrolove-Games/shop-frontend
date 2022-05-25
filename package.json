@@ -12,6 +12,7 @@
     "start": "gatsby develop -p 9000 -o",
     "develop:public": "gatsby develop -H 0.0.0.0 -p 9000 -o",
     "build": "gatsby build",
+    "build:serve": "gatsby build & gatsby serve",
     "serve": "gatsby serve",
     "serve:public": "gatsby serve -H 0.0.0.0 -p 9000 -o",
     "clean": "gatsby clean",
