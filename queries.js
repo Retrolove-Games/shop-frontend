@@ -12,7 +12,7 @@ module.exports.QUERY_CATEGORIES = `
 `;
 
 module.exports.GET_ALL_GROUPED_PRODUCTS = `
-  allWpSimpleProduct(
+  groupedProducts: allWpSimpleProduct(
     sort: {fields: [stockStatus, date], order: [ASC, DESC]}
     filter: {status: {eq: "publish"}}
   ) {
@@ -22,7 +22,7 @@ module.exports.GET_ALL_GROUPED_PRODUCTS = `
         node {
           id
         }
-      }
     }
+    totalCount
   }
 `;
