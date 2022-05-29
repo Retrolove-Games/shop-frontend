@@ -1,4 +1,4 @@
-const QUERY_CATEGORIES = `
+module.exports.QUERY_CATEGORIES = `
   allWpProductCategory(
     filter: {slug: {ne: "uncategorized"}}
   ) {
@@ -11,4 +11,18 @@ const QUERY_CATEGORIES = `
   }
 `;
 
-module.exports.QUERY_CATEGORIES = QUERY_CATEGORIES;
+module.exports.GET_ALL_GROUPED_PRODUCTS = `
+  allWpSimpleProduct(
+    sort: {fields: [stockStatus, date], order: [ASC, DESC]}
+    filter: {status: {eq: "publish"}}
+  ) {
+    group(field: productCategories___nodes___link) {
+      categorySlug: fieldValue
+      products: edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+`;
