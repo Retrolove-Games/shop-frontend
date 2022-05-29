@@ -22,7 +22,8 @@ module.exports.GET_ALL_GROUPED_PRODUCTS = `
         node {
           id
         }
+      }
+      totalCount
     }
-    totalCount
   }
 `;
