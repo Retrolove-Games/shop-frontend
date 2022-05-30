@@ -57,9 +57,9 @@ const afterware = new ApolloLink((operation, forward) => {
       if (session) {
         if ("false" === session) {
           localStorage.removeItem("woo-session");
+        } else if (localStorage.getItem("woo-session") !== session) {
+          localStorage.setItem("woo-session", session);
         }
-      } else if (localStorage.getItem("woo-session") !== session) {
-        localStorage.setItem("woo-session", headers.get("woocommerce-session"));
       }
     }
 
