@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",
+    "@artsy/fresnel": "^3.5.0",
     "@retrolove-games/css-reset": "file:../web-ui/packages/css-reset",
     "@retrolove-games/ui-badge": "file:../web-ui/packages/badge",
     "@retrolove-games/ui-button": "file:../web-ui/packages/button",
