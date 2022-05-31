@@ -27,6 +27,26 @@ export const storeAuth = (response: LoginRespone) => {
 };
 
 /**
+ * Get auth store form local storage.
+ * @returns
+ */
+export const getAuth = () => {
+  const encodedAuth = localStorage.getItem("auth");
+
+  if (encodedAuth) {
+    const authStore = JSON.parse(encodedAuth) as AuthStore;
+
+    if ("authToken" in authStore && "refreshToken" in authStore) {
+      return authStore;
+    } else {
+      throw new Error("Broken auth store");
+    }
+  } else {
+    return;
+  }
+};
+
+/**
  * GraphQL errors to human readable
  * @param errors
  * @param msg

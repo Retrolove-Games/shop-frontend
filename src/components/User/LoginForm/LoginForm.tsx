@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOG_IN, LOG_IN_ERRORS } from "@src/mutations/login";
-import { storeAuth, graphQLErrorsToHuman } from "@src/apollo/utils";
+import { storeAuth, graphQLErrorsToHuman, getAuth } from "@src/apollo/utils";
 import { Button } from "@retrolove-games/ui-button";
+import { nanoid } from "nanoid";
 import type { LoginRespone } from "@src/apollo/types";
 
 type ComponentProps = {};
@@ -20,9 +21,8 @@ export const LoginForm: ComponentType = ({ ...props }) => {
         setErrorMsg([]);
       } catch(e) {
         if(error) {
-          setErrorMsg(graphQLErrorsToHuman(error?.graphQLErrors, LOG_IN_ERRORS));
+          setErrorMsg(graphQLErrorsToHuman(error!.graphQLErrors, LOG_IN_ERRORS));
         }
-        console.log(error?.graphQLErrors);
       }
     },
   });
@@ -33,12 +33,14 @@ export const LoginForm: ComponentType = ({ ...props }) => {
       variables: {
         username: loginInput.value,
         password: passwordInput.value,
-        id: "cholibka",
+        id: nanoid(),
       },
     });
   }
 
   if (loading) return <p>Loading...</p>;
+
+  const auth = getAuth();
 
   return (
     <>
@@ -57,7 +59,8 @@ export const LoginForm: ComponentType = ({ ...props }) => {
         </div>
       </form>
       <pre style={{fontSize: "8px"}}>
-        { JSON.stringify(data, null, " ") }
+        { JSON.stringify(data, null, " ") }<br />
+        { JSON.stringify(auth, null, " ") }
       </pre>
     </>
   );
