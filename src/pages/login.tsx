@@ -1,17 +1,12 @@
 import * as React from "react";
-import { useQuery } from "@apollo/client";
-import { GET_CATEGORIES } from "@src/queries/categories";
+import { LoginForm } from "@components/User/LoginForm";
 
 const LoginPage = () => {
-  const { loading, error, data } = useQuery(GET_CATEGORIES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
 
   return (
     <>
-      <h1>Login page</h1>
-      <pre>{JSON.stringify(data, null, " ")}</pre>
+      <h1>Formularz logowania</h1>
+      <LoginForm />
     </>
   );
 };

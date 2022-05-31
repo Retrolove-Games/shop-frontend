@@ -4,6 +4,7 @@ import {
   createHttpLink,
   InMemoryCache,
   ApolloLink,
+  concat,
 } from "@apollo/client";
 
 type HeadersData = {
@@ -11,7 +12,14 @@ type HeadersData = {
   authorization?: string | null;
 };
 
-const middleware = new ApolloLink((operation, forward) => {
+const httpLink = createHttpLink({
+  uri: process.env.GATSBY_API_URL,
+});
+
+/**
+ * Auth header link.
+ */
+const authLink = new ApolloLink((operation, forward) => {
   let headersData: HeadersData = {};
 
   if (isBrowser()) {
@@ -29,7 +37,7 @@ const middleware = new ApolloLink((operation, forward) => {
       const auth = JSON.parse(rawAuth);
 
       if (auth && auth.authToken) {
-        headersData.authorization = `authorization ${auth.authToken}`;
+        headersData.authorization = `Bearer ${auth.authToken}`;
       }
     }
 
@@ -45,7 +53,10 @@ const middleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const afterware = new ApolloLink((operation, forward) => {
+/**
+ * Handle Woocommerce session.
+ */
+const wooCommerceLink = new ApolloLink((operation, forward) => {
   return forward(operation).map((response) => {
     if (isBrowser()) {
       const context = operation.getContext();
@@ -68,12 +79,6 @@ const afterware = new ApolloLink((operation, forward) => {
 });
 
 export const client = new ApolloClient({
-  link: middleware.concat(
-    afterware.concat(
-      createHttpLink({
-        uri: process.env.GATSBY_API_URL,
-      })
-    )
-  ),
+  link: concat(concat(authLink, wooCommerceLink), httpLink),
   cache: new InMemoryCache(),
 });
