@@ -1,4 +1,6 @@
-import type { LoginRespone, AuthStore } from "./types";
+import jwt_decode from "jwt-decode";
+import { isBrowser } from "@src/helpers/utils";
+import type { LoginRespone, AuthStore, TokenData } from "./types";
 
 /**
  * Store auth data in local storage
@@ -19,7 +21,7 @@ export const storeAuth = (response: LoginRespone) => {
       id,
     };
 
-    localStorage.setItem("auth", JSON.stringify(authStore));
+    isBrowser() && localStorage.setItem("auth", JSON.stringify(authStore));
   } else {
     throw new Error("Login data is propably null");
   }
@@ -30,7 +32,7 @@ export const storeAuth = (response: LoginRespone) => {
  * @returns
  */
 export const getAuth = () => {
-  const encodedAuth = localStorage.getItem("auth");
+  const encodedAuth = isBrowser() ? localStorage.getItem("auth") : null;
 
   if (encodedAuth) {
     const authStore = JSON.parse(encodedAuth) as AuthStore;
@@ -44,3 +46,22 @@ export const getAuth = () => {
     return;
   }
 };
+
+/**
+ * Decode JWT token.
+ * @param token
+ * @returns
+ */
+export const decodeToken = (token: string) => jwt_decode<TokenData | null>(token);
+
+/**
+ * Check if token is expired.
+ * @param expTimestamp
+ * @returns
+ */
+export const isPHPTimestampExpired = (expTimestamp: number) => {
+  const currentTimestamp = Date.now();
+  const expInSeconds = expTimestamp * 1000;
+
+  return currentTimestamp > expInSeconds;
+}

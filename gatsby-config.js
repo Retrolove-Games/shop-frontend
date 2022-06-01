@@ -61,5 +61,11 @@ module.exports = {
         breakpoints,
       },
     },
+    {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: process.env.GATSBY_API_URL
+      }
+    },
   ],
 };

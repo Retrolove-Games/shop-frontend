@@ -1,4 +1,6 @@
-import { isBrowser } from "@src/helpers/utils";
+import fetch from "isomorphic-fetch";
+import { getAuth, decodeToken, isPHPTimestampExpired } from "./auth";
+import { setContext } from "@apollo/client/link/context";
 import {
   ApolloClient,
   createHttpLink,
@@ -6,51 +8,42 @@ import {
   ApolloLink,
   concat,
 } from "@apollo/client";
-
-type HeadersData = {
-  "woocommerce-session"?: string | null;
-  authorization?: string | null;
-};
+import type { HeadersData } from "./types";
 
 const httpLink = createHttpLink({
   uri: process.env.GATSBY_API_URL,
+  // @ts-ignore
+  fetch: fetch
 });
 
 /**
  * Auth header link.
  */
-const authLink = new ApolloLink((operation, forward) => {
+const authLink = setContext(async (_, { headers = {} }) => {
   let headersData: HeadersData = {};
 
-  if (isBrowser()) {
-    // Woocommerce session string
-    const session = localStorage.getItem("woo-session");
+  // If we have auth store
+  const auth = getAuth();
 
-    if (session) {
-      headersData["woocommerce-session"] = `Session ${session}`;
-    }
+  if (auth) {
+    const { authToken, refreshToken } = auth;
+    const tokenData = decodeToken(authToken);
 
-    // WordPress JWT
-    const rawAuth = localStorage.getItem("auth");
+    if (tokenData) {
+      const { exp } = tokenData;
 
-    if (rawAuth) {
-      const auth = JSON.parse(rawAuth);
-
-      if (auth && auth.authToken) {
-        headersData.authorization = `Bearer ${auth.authToken}`;
+      if (isPHPTimestampExpired(Number(exp))) {
+        console.log("timestamp expired");
       }
     }
-
-    // Append required headers
-    operation.setContext(({ headers = {} }) => ({
-      headers: {
-        ...headers,
-        ...headersData,
-      },
-    }));
   }
 
-  return forward(operation);
+  return {
+    headers: {
+      ...headers,
+      ...headersData,
+    },
+  };
 });
 
 /**
@@ -58,27 +51,11 @@ const authLink = new ApolloLink((operation, forward) => {
  */
 const wooCommerceLink = new ApolloLink((operation, forward) => {
   return forward(operation).map((response) => {
-    if (isBrowser()) {
-      const context = operation.getContext();
-      const {
-        response: { headers },
-      } = context;
-      const session = headers.get("woocommerce-session");
-
-      if (session) {
-        if ("false" === session) {
-          localStorage.removeItem("woo-session");
-        } else if (localStorage.getItem("woo-session") !== session) {
-          localStorage.setItem("woo-session", session);
-        }
-      }
-    }
-
     return response;
   });
 });
 
 export const client = new ApolloClient({
-  link: concat(concat(authLink, wooCommerceLink), httpLink),
+  link: concat(authLink, httpLink),
   cache: new InMemoryCache(),
 });
