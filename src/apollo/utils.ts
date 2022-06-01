@@ -8,10 +8,10 @@ import type { GraphQLErrors } from "@apollo/client/errors";
  */
  export const graphQLErrorsToHuman = (
   errors: GraphQLErrors,
-  ...msg: Map<string, string>[]
+  ...msg: Record<string, string>[]
 ) => {
-  const allMsg = new Map(msg.flatMap((map) => [...map]));
+  const allMsg = Object.assign({}, ...msg);
   return errors.map(({ message }) =>
-    allMsg.has(message) ? allMsg.get(message)! : `Błąd: ${message}`
+    allMsg.hasOwnProperty(message) ? allMsg[message]! : `Błąd: ${message}`
   );
 };
