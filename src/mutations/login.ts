@@ -15,11 +15,7 @@ const LOG_IN = gql`
   }
 `;
 
-
-const DEFAULT_ERRORS = new Map<string, string>();
-DEFAULT_ERRORS.set("Internal server error", "Wewenętrzny błąd serwera");
-
-const LOG_IN_ERRORS = new Map<string, string>([...DEFAULT_ERRORS]);
+const LOG_IN_ERRORS = new Map<string, string>();
 LOG_IN_ERRORS.set("empty_username", "Brak nazwy użytkownika");
 LOG_IN_ERRORS.set("invalid_username", "Niepoprawna nazwa użytkownika");
 LOG_IN_ERRORS.set("empty_password", "Puste hasło");
