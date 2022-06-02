@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { DEFAULT_ERRORS } from "@src/mutations/defaultErrors";
+import { useMutation, useQuery } from "@apollo/client";
+import { DEFAULT_ERRORS } from "@src/apollo/defaultErrors";
 import { LOG_IN, LOG_IN_ERRORS } from "@src/mutations/login";
-import { storeAuth, getAuth } from "@src/apollo/auth";
+import { GET_USER_INFO } from "@src/queries/userInfo";
+import { storeAuth, getAuthStore, loginResponseToAuthStore } from "@src/apollo/auth";
 import { graphQLErrorsToHuman } from "@src/apollo/utils";
 import { Button } from "@retrolove-games/ui-button";
 import { nanoid } from "nanoid";
@@ -15,11 +16,20 @@ export const LoginForm: ComponentType = ({ ...props }) => {
   const [errorMsg, setErrorMsg] = useState<Array<string>>();
   let loginInput: HTMLInputElement, passwordInput: HTMLInputElement;
 
+  const {
+    loading: userLoading,
+    error: userError,
+    data: userData,
+    refetch: refetchUserInfo
+  } = useQuery(GET_USER_INFO, {
+    fetchPolicy: 'network-only',
+  });
+
   const [logIn, { data, loading, error }] = useMutation(LOG_IN, {
     errorPolicy: "all",
     onCompleted: (data: LoginRespone) => {
       try {
-        storeAuth(data);
+        storeAuth(loginResponseToAuthStore(data));
         setErrorMsg([]);
       } catch (e) {
         if (error) {
@@ -46,9 +56,9 @@ export const LoginForm: ComponentType = ({ ...props }) => {
     });
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading || userLoading) return <p>Loading...</p>;
 
-  const auth = getAuth();
+  const auth = getAuthStore();
 
   return (
     <>
@@ -75,6 +85,8 @@ export const LoginForm: ComponentType = ({ ...props }) => {
         <br />
         {JSON.stringify(auth, null, " ")}
       </pre>
+      <div>{userData && <pre>{JSON.stringify(userData, null, " ")}</pre>}</div>
+      <Button size="medium" onClick={() => refetchUserInfo()}>Refetch user</Button>
     </>
   );
 };
