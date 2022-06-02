@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 export const useIsHome = () => {
   const [isHome, setIsHome] = useState<boolean>();
 
@@ -14,4 +13,4 @@ export const useIsHome = () => {
   });
 
   return isHome;
-}
+};
