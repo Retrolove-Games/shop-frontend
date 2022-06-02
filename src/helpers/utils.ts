@@ -1,13 +1,16 @@
 export const isBrowser = () => typeof window !== "undefined";
 
-export const isEmpty = (check: any) => {
-  if (check === undefined || check === null) {
-    return true;
-  }
-
-  if (check.constructor === Object && Object.entries(check).length === 0) {
-    return true;
-  }
-
-  return false;
-}
+/**
+ * Check if all wanted properties are non falsy.
+ * @param obj
+ * @param filter
+ * @returns
+ */
+export const arePropertiesNonFalsy = (
+  obj: Record<any, any>,
+  ...filter: string[]
+) => {
+  return Object.entries(obj)
+    .filter((arr) => filter.includes(arr[0]))
+    .every((arr) => !!arr[1]);
+};
