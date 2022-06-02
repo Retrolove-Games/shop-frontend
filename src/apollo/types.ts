@@ -36,3 +36,11 @@ export type TokenData = {
     };
   };
 };
+
+export type RefreshTokenData = {
+  data: {
+    refreshJwtAuthToken: {
+      authToken: string;
+    };
+  };
+};

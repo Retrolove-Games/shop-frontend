@@ -1,12 +1,21 @@
 import jwt_decode from "jwt-decode";
-import { isBrowser } from "@src/helpers/utils";
-import type { LoginRespone, AuthStore, TokenData } from "./types";
+import * as storageHelpers from "./storageHelpers";
+import { REFRESH_TOKEN } from "@src/mutations/refreshToken";
+import { gqlToString, rawGqlQuery } from "@src/apollo/utils";
+import { arePropertiesNonFalsy } from "@src/helpers/utils";
+import type {
+  LoginRespone,
+  AuthStore,
+  TokenData,
+  RefreshTokenData,
+} from "./types";
 
 /**
- * Store auth data in local storage
+ * Convert login response to AuthStore.
  * @param response
+ * @returns
  */
-export const storeAuth = (response: LoginRespone) => {
+export const loginResponseToAuthStore = (response: LoginRespone): AuthStore => {
   const { login } = response;
 
   if (login) {
@@ -15,36 +24,50 @@ export const storeAuth = (response: LoginRespone) => {
       refreshToken,
       user: { id },
     } = login;
-    const authStore: AuthStore = {
+
+    return {
       authToken,
       refreshToken,
       id,
     };
-
-    isBrowser() && localStorage.setItem("auth", JSON.stringify(authStore));
   } else {
     throw new Error("Login data is propably null");
   }
 };
 
 /**
+ * Store auth data in local storage
+ * @param response
+ */
+export const storeAuth = (store: AuthStore) => {
+  storageHelpers.storeAuthToken(store.authToken);
+  storageHelpers.storeRefreshToken(store.refreshToken);
+  storageHelpers.storeUserId(store.id);
+};
+
+/**
  * Get auth store form local storage.
  * @returns
  */
-export const getAuth = () => {
-  const encodedAuth = isBrowser() ? localStorage.getItem("auth") : null;
+export const getAuthStore = () => {
+  const store = {
+    [`${storageHelpers.AUTH_TOKEN_KEY}`]: storageHelpers.getAuthToken(),
+    [`${storageHelpers.REFRESH_TOKEN_KEY}`]: storageHelpers.getRefreshToken(),
+    [`${storageHelpers.USER_ID_KEY}`]: storageHelpers.getUserId(),
+  };
 
-  if (encodedAuth) {
-    const authStore = JSON.parse(encodedAuth) as AuthStore;
-
-    if ("authToken" in authStore && "refreshToken" in authStore) {
-      return authStore;
-    } else {
-      throw new Error("Broken auth store");
-    }
-  } else {
-    return;
+  if (
+    arePropertiesNonFalsy(
+      store,
+      storageHelpers.AUTH_TOKEN_KEY,
+      storageHelpers.REFRESH_TOKEN_KEY,
+      storageHelpers.USER_ID_KEY
+    )
+  ) {
+    return store as AuthStore;
   }
+
+  return false;
 };
 
 /**
@@ -52,7 +75,8 @@ export const getAuth = () => {
  * @param token
  * @returns
  */
-export const decodeToken = (token: string) => jwt_decode<TokenData | null>(token);
+export const decodeToken = (token: string) =>
+  jwt_decode<TokenData | null>(token);
 
 /**
  * Check if token is expired.
@@ -64,4 +88,24 @@ export const isPHPTimestampExpired = (expTimestamp: number) => {
   const expInSeconds = expTimestamp * 1000;
 
   return currentTimestamp > expInSeconds;
-}
+};
+
+/**
+ * Request refreshed token.
+ * @param url
+ * @param refreshToken
+ * @param id
+ * @returns
+ */
+export const refreshAuthToken = async (
+  url: string,
+  refreshToken: string,
+  id: string
+) => {
+  const query = gqlToString(REFRESH_TOKEN);
+
+  return await rawGqlQuery<RefreshTokenData>(url, query!, {
+    id,
+    refreshToken,
+  });
+};
