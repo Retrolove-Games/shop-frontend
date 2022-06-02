@@ -7,6 +7,7 @@ import { storeAuth, getAuthStore, loginResponseToAuthStore } from "@src/apollo/a
 import { graphQLErrorsToHuman } from "@src/apollo/utils";
 import { Button } from "@retrolove-games/ui-button";
 import { nanoid } from "nanoid";
+import { useIsUserLoggedIn } from "@src/hooks/useIsUserLoggedIn";
 import type { LoginRespone } from "@src/apollo/types";
 
 type ComponentProps = {};
@@ -15,6 +16,7 @@ type ComponentType = React.VFC<ComponentProps>;
 export const LoginForm: ComponentType = ({ ...props }) => {
   const [errorMsg, setErrorMsg] = useState<Array<string>>();
   let loginInput: HTMLInputElement, passwordInput: HTMLInputElement;
+  const loggedIn = useIsUserLoggedIn();
 
   const {
     loading: userLoading,
@@ -55,6 +57,8 @@ export const LoginForm: ComponentType = ({ ...props }) => {
       },
     });
   };
+
+  if (loggedIn) return <p>JUŻ ZALOGOWANY</p>;
 
   if (loading || userLoading) return <p>Loading...</p>;
 
