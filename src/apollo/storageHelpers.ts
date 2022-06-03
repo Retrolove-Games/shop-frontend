@@ -33,5 +33,17 @@ export const getUserId = () =>
 export const getWooSession = () =>
   isBrowser() && sessionStorage.getItem(WOO_SESS_KEY);
 
+// Cleanup
+export const removeAuthToken = () =>
+  isBrowser() && localStorage.removeItem(AUTH_TOKEN_KEY);
+
+export const removeRefreshToken  = () =>
+  isBrowser() && localStorage.removeItem(REFRESH_TOKEN_KEY);
+
+export const removeUserId = () =>
+  isBrowser() && localStorage.removeItem(USER_ID_KEY);
+
 export const removeWooSession = () =>
   isBrowser() && sessionStorage.removeItem(WOO_SESS_KEY);
+
+
