@@ -15,7 +15,7 @@ exports.createPages = async (gatsbyUtilities) => {
 };
 
 /**
- * Create category pages.
+ * 📚 Create category pages.
  */
 const createCategoryPages = async (categories, gatsbyUtilities) =>
   Promise.all(
@@ -28,7 +28,7 @@ const createCategoryPages = async (categories, gatsbyUtilities) =>
           slug: category.slug,
           name: category.name,
         },
-      })
+      });
     })
   );
 
@@ -54,7 +54,7 @@ async function getData({ graphql, reporter }) {
 }
 
 /**
- * Add Aliases for webpack.
+ * 🔍 Add Aliases for webpack.
  * @param {*} param0
  */
 exports.onCreateWebpackConfig = ({ actions }) => {
