@@ -6,7 +6,7 @@ import { Wrapper } from "./<%=name%>.styles";
 
 type ComponentProps = {};
 
-type ComponentType = React.VFC<ComponentProps>;
+type ComponentType = React.FC<ComponentProps>;
 
 export const <%=name%>: ComponentType = ({ ...props }) => (
   <Wrapper {...props}>

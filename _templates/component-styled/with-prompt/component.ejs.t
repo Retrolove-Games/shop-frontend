@@ -4,7 +4,9 @@ to: src/components/<%=name%>/<%=name%>.tsx
 import React from "react";
 import { Wrapper } from "./<%=name%>.styles";
 
-type ComponentProps = {};
+type ComponentProps = {
+  children: React.ReactNode;
+};
 
 type ComponentType = React.FC<ComponentProps>;
 

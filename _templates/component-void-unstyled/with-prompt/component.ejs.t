@@ -5,7 +5,7 @@ import React from "react";
 
 type ComponentProps = {};
 
-type ComponentType = React.VFC<ComponentProps>;
+type ComponentType = React.FC<ComponentProps>;
 
 export const <%=name%>: ComponentType = ({ ...props }) => (
   <>
