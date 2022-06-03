@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import { client } from "./client";
 import * as storageHelpers from "./storageHelpers";
 import { REFRESH_TOKEN } from "@src/mutations/refreshToken";
 import { gqlToString, rawGqlQuery } from "@src/apollo/utils";
@@ -109,3 +110,13 @@ export const refreshAuthToken = async (
     refreshToken,
   });
 };
+
+/**
+ * Destroy auth data & refetch.
+ */
+export const logOut = () => {
+  storageHelpers.removeAuthToken();
+  storageHelpers.removeRefreshToken();
+  storageHelpers.removeUserId();
+  return client.resetStore();
+}
