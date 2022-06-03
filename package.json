@@ -18,7 +18,8 @@
     "clean": "gatsby clean",
     "lint": "eslint src/* --no-error-on-unmatched-pattern",
     "lint:fix": "eslint src/* --fix --no-error-on-unmatched-pattern",
-    "lint:quiet": "eslint src/* --quiet --no-error-on-unmatched-pattern"
+    "lint:quiet": "eslint src/* --quiet --no-error-on-unmatched-pattern",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",
@@ -67,6 +68,10 @@
     "webgl-utils.js": "^1.1.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/typescript": "2.4.11",
+    "@graphql-codegen/typescript-operations": "2.4.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.14",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-config-gatsby-standard": "^3.0.2",
