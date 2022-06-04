@@ -9,23 +9,16 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
-    {
-      resolve: "gatsby-source-wordpress",
-      options: {
-        url: process.env.GATSBY_API_URL,
-      },
-      html: {
-        createStaticFiles: true,
-        useGatsbyImage: true,
-      },
-    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: process.env.TRACKING_ID,
       },
     },
-    "gatsby-plugin-image",
+
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
@@ -34,8 +27,7 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -62,10 +54,24 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-apollo',
+      resolve: "gatsby-plugin-apollo",
       options: {
-        uri: process.env.GATSBY_API_URL
-      }
+        uri: process.env.GATSBY_API_URL,
+      },
+    },
+
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        url: process.env.GATSBY_API_URL,
+      },
+      html: {
+        createStaticFiles: false,
+        useGatsbyImage: false,
+      },
+      type: {
+        MediaItem: { createFileNodes: false },
+      },
     },
   ],
 };
