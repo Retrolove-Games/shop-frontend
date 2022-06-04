@@ -1,15 +1,22 @@
 import * as React from "react";
-import { SidebarLayout } from "@components/Layout";
+import { graphql } from "gatsby";
 
 const IndexPage = () => {
-
   return (
     <>
-    {/*<SidebarLayout>*/}
       <h1>Content</h1>
-    {/*</SidebarLayout>*/}
     </>
   );
-}
+};
+
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        description
+      }
+    }
+  }
+`;
 
 export default IndexPage;
