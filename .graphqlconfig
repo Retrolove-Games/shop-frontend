@@ -1,0 +1,14 @@
+{
+  "name": "Directus Schema",
+  "extensions": {
+    "endpoints": {
+      "Gatsby GraphQL Endpoint": {
+        "url": "http://localhost:8000/graphql",
+        "headers": {
+          "authorization": "Bearer 2b1I7cbQaUFpWA5PMJc8NV8u3-IkkULf"
+        },
+        "introspect": true
+      }
+    }
+  }
+}
