@@ -24,6 +24,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@artsy/fresnel": "^1.9.0",
+    "@directus/gatsby-source-directus": "^9.12.1",
     "@retrolove-games/css-reset": "file:../web-ui/packages/css-reset",
     "@retrolove-games/ui-badge": "file:../web-ui/packages/badge",
     "@retrolove-games/ui-button": "file:../web-ui/packages/button",
@@ -52,7 +53,6 @@
     "gatsby-plugin-sitemap": "^5.7.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^4.7.0",
-    "gatsby-source-wordpress": "^6.7.0",
     "gatsby-transformer-sharp": "^4.7.0",
     "graphql": "^15.8.0",
     "graphql-ws": "^5.8.2",
