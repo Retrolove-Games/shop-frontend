@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "develop": "gatsby develop -p 9000 -o",
+    "develop:no-window": "gatsby develop -p 9000",
     "start": "gatsby develop -p 9000 -o",
     "develop:public": "gatsby develop -H 0.0.0.0 -p 9000 -o",
     "build": "gatsby build",
