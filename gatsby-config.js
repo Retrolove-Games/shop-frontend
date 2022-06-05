@@ -9,23 +9,42 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    // WP
     {
       resolve: "gatsby-source-wordpress",
       options: {
         url: process.env.GATSBY_API_URL,
       },
       html: {
-        createStaticFiles: true,
-        useGatsbyImage: true,
+        createStaticFiles: false,
+        useGatsbyImage: false,
       },
     },
+
+    // Images
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          quality: 80,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+
+    "gatsby-plugin-image",
+
+    // Others
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: process.env.TRACKING_ID,
       },
     },
-    "gatsby-plugin-image",
+
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
@@ -34,16 +53,7 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
+
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -62,10 +72,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-apollo',
+      resolve: "gatsby-plugin-apollo",
       options: {
-        uri: process.env.GATSBY_API_URL
-      }
+        uri: process.env.GATSBY_API_URL,
+      },
     },
   ],
 };
