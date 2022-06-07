@@ -63,13 +63,9 @@ module.exports = {
     {
       resolve: "@directus/gatsby-source-directus",
       options: {
-        url: process.env.GATSBY_API_URL, // Fill with your Directus instance address
+        url: process.env.GATSBY_API_URL,
         auth: {
-          token: process.env.API_TOKEN, // You can use a static token from an user
-
-          // Or you can use the credentials of an user
-          // email: "johndoe@directus.cloud",
-          // password: "mysecretpassword",
+          token: process.env.API_TOKEN,
         },
       },
     },
