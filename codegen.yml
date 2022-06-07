@@ -1,5 +1,8 @@
 overwrite: true
-schema: "http://localhost:8000/graphql/"
+schema:
+  - "${GATSBY_API_URL}":
+      headers:
+        Authorization: "Bearer ${API_TOKEN}"
 generates:
   src/generated/graphql.tsx:
     plugins:
