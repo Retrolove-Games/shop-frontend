@@ -65,7 +65,7 @@ module.exports = {
       options: {
         url: process.env.GATSBY_API_URL, // Fill with your Directus instance address
         auth: {
-          token: "2b1I7cbQaUFpWA5PMJc8NV8u3-IkkULf", // You can use a static token from an user
+          token: process.env.API_TOKEN, // You can use a static token from an user
 
           // Or you can use the credentials of an user
           // email: "johndoe@directus.cloud",
