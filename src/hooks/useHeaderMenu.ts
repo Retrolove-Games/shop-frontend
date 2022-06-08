@@ -1,64 +1,42 @@
 import { useStaticQuery, graphql } from "gatsby";
-
-export type MenuItemNode = {
-  id: string;
-  label: string;
-  slug: string;
-  path: string;
-  childItems: {
-    nodes: MenuItemNode[];
-  };
-};
-
-type Data = {
-  allWpMenuItem: {
-    nodes: MenuItemNode[];
-  };
-};
+import { Menus } from "@src/generated/graphql";
+import type { Directus } from "@src/types/utilty";
 
 export const useHeaderMenu = () => {
-  const data = useStaticQuery<Data>(
+  const data = useStaticQuery<Directus<{ menus: [Menus] }>>(
     graphql`
-      fragment childMenuItems on WpMenuItem {
-        childItems {
-          nodes {
-            id
-            label
-            path
-            order
-            ... on WpMenuItem {
-              childItems {
-                nodes {
-                  id
-                  label
-                  path
-                  order
+      fragment MenuItems on DirectusData_menu_items {
+        title
+        path
+        id
+      }
+
+      query Menu {
+        directus {
+          menus(
+            filter: { name: { _eq: "sidebar" }, status: { _eq: "published" } }
+          ) {
+            name
+            items {
+              menu_items_id(sort: ["sort"]) {
+                ...MenuItems
+                child_items {
+                  related_menu_items_id(sort: ["sort"]) {
+                    ...MenuItems
+                    child_items {
+                      related_menu_items_id {
+                        ...MenuItems
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         }
       }
-
-      {
-        allWpMenuItem(
-          sort: { order: ASC, fields: order }
-          filter: {
-            locations: { eq: GATSBY_HEADER_MENU }
-            parentDatabaseId: { eq: 0 }
-          }
-        ) {
-          nodes {
-            id
-            label
-            path
-            order
-            ...childMenuItems
-          }
-        }
-      }
     `
   );
 
-  return data.allWpMenuItem;
+  return data.directus.menus[0];
 };

@@ -65,6 +65,7 @@
     "react-helmet": "^6.1.0",
     "react-id-generator": "^3.0.2",
     "terser-sync": "^0.1.1",
+    "ts-deep-extract-types": "^1.0.1",
     "webgl-utils.js": "^1.1.0"
   },
   "devDependencies": {

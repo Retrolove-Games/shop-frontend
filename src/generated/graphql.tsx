@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type Maybe<T> = T;
+export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -21,30 +21,42 @@ export type Mutation = {
   __typename?: 'Mutation';
   create_categories_item?: Maybe<Categories>;
   create_categories_items?: Maybe<Array<Maybe<Categories>>>;
-  create_menu_item?: Maybe<Menu>;
-  create_menu_item_item?: Maybe<Menu_Item>;
-  create_menu_item_items?: Maybe<Array<Maybe<Menu_Item>>>;
-  create_menu_items?: Maybe<Array<Maybe<Menu>>>;
+  create_menu_items_item?: Maybe<Menu_Items>;
+  create_menu_items_items?: Maybe<Array<Maybe<Menu_Items>>>;
+  create_menu_items_menu_items_item?: Maybe<Menu_Items_Menu_Items>;
+  create_menu_items_menu_items_items?: Maybe<Array<Maybe<Menu_Items_Menu_Items>>>;
+  create_menus_item?: Maybe<Menus>;
+  create_menus_items?: Maybe<Array<Maybe<Menus>>>;
+  create_menus_menu_items_item?: Maybe<Menus_Menu_Items>;
+  create_menus_menu_items_items?: Maybe<Array<Maybe<Menus_Menu_Items>>>;
   create_products_categories_item?: Maybe<Products_Categories>;
   create_products_categories_items?: Maybe<Array<Maybe<Products_Categories>>>;
   create_products_item?: Maybe<Products>;
   create_products_items?: Maybe<Array<Maybe<Products>>>;
   delete_categories_item?: Maybe<Delete_One>;
   delete_categories_items?: Maybe<Delete_Many>;
-  delete_menu_item?: Maybe<Delete_One>;
-  delete_menu_item_item?: Maybe<Delete_One>;
-  delete_menu_item_items?: Maybe<Delete_Many>;
-  delete_menu_items?: Maybe<Delete_Many>;
+  delete_menu_items_item?: Maybe<Delete_One>;
+  delete_menu_items_items?: Maybe<Delete_Many>;
+  delete_menu_items_menu_items_item?: Maybe<Delete_One>;
+  delete_menu_items_menu_items_items?: Maybe<Delete_Many>;
+  delete_menus_item?: Maybe<Delete_One>;
+  delete_menus_items?: Maybe<Delete_Many>;
+  delete_menus_menu_items_item?: Maybe<Delete_One>;
+  delete_menus_menu_items_items?: Maybe<Delete_Many>;
   delete_products_categories_item?: Maybe<Delete_One>;
   delete_products_categories_items?: Maybe<Delete_Many>;
   delete_products_item?: Maybe<Delete_One>;
   delete_products_items?: Maybe<Delete_Many>;
   update_categories_item?: Maybe<Categories>;
   update_categories_items?: Maybe<Array<Maybe<Categories>>>;
-  update_menu_item?: Maybe<Menu>;
-  update_menu_item_item?: Maybe<Menu_Item>;
-  update_menu_item_items?: Maybe<Array<Maybe<Menu_Item>>>;
-  update_menu_items?: Maybe<Array<Maybe<Menu>>>;
+  update_menu_items_item?: Maybe<Menu_Items>;
+  update_menu_items_items?: Maybe<Array<Maybe<Menu_Items>>>;
+  update_menu_items_menu_items_item?: Maybe<Menu_Items_Menu_Items>;
+  update_menu_items_menu_items_items?: Maybe<Array<Maybe<Menu_Items_Menu_Items>>>;
+  update_menus_item?: Maybe<Menus>;
+  update_menus_items?: Maybe<Array<Maybe<Menus>>>;
+  update_menus_menu_items_item?: Maybe<Menus_Menu_Items>;
+  update_menus_menu_items_items?: Maybe<Array<Maybe<Menus_Menu_Items>>>;
   update_products_categories_item?: Maybe<Products_Categories>;
   update_products_categories_items?: Maybe<Array<Maybe<Products_Categories>>>;
   update_products_item?: Maybe<Products>;
@@ -68,19 +80,14 @@ export type MutationCreate_Categories_ItemsArgs = {
 };
 
 
-export type MutationCreate_Menu_ItemArgs = {
-  data: Create_Menu_Input;
+export type MutationCreate_Menu_Items_ItemArgs = {
+  data: Create_Menu_Items_Input;
 };
 
 
-export type MutationCreate_Menu_Item_ItemArgs = {
-  data: Create_Menu_Item_Input;
-};
-
-
-export type MutationCreate_Menu_Item_ItemsArgs = {
-  data?: InputMaybe<Array<Create_Menu_Item_Input>>;
-  filter?: InputMaybe<Menu_Item_Filter>;
+export type MutationCreate_Menu_Items_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Menu_Items_Input>>;
+  filter?: InputMaybe<Menu_Items_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -89,9 +96,46 @@ export type MutationCreate_Menu_Item_ItemsArgs = {
 };
 
 
-export type MutationCreate_Menu_ItemsArgs = {
-  data?: InputMaybe<Array<Create_Menu_Input>>;
-  filter?: InputMaybe<Menu_Filter>;
+export type MutationCreate_Menu_Items_Menu_Items_ItemArgs = {
+  data: Create_Menu_Items_Menu_Items_Input;
+};
+
+
+export type MutationCreate_Menu_Items_Menu_Items_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Menu_Items_Menu_Items_Input>>;
+  filter?: InputMaybe<Menu_Items_Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MutationCreate_Menus_ItemArgs = {
+  data: Create_Menus_Input;
+};
+
+
+export type MutationCreate_Menus_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Menus_Input>>;
+  filter?: InputMaybe<Menus_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MutationCreate_Menus_Menu_Items_ItemArgs = {
+  data: Create_Menus_Menu_Items_Input;
+};
+
+
+export type MutationCreate_Menus_Menu_Items_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Menus_Menu_Items_Input>>;
+  filter?: InputMaybe<Menus_Menu_Items_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -142,22 +186,42 @@ export type MutationDelete_Categories_ItemsArgs = {
 };
 
 
-export type MutationDelete_Menu_ItemArgs = {
+export type MutationDelete_Menu_Items_ItemArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDelete_Menu_Item_ItemArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDelete_Menu_Item_ItemsArgs = {
+export type MutationDelete_Menu_Items_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']>>;
 };
 
 
-export type MutationDelete_Menu_ItemsArgs = {
+export type MutationDelete_Menu_Items_Menu_Items_ItemArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDelete_Menu_Items_Menu_Items_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']>>;
+};
+
+
+export type MutationDelete_Menus_ItemArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDelete_Menus_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']>>;
+};
+
+
+export type MutationDelete_Menus_Menu_Items_ItemArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDelete_Menus_Menu_Items_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']>>;
 };
 
@@ -200,21 +264,15 @@ export type MutationUpdate_Categories_ItemsArgs = {
 };
 
 
-export type MutationUpdate_Menu_ItemArgs = {
-  data: Update_Menu_Input;
+export type MutationUpdate_Menu_Items_ItemArgs = {
+  data: Update_Menu_Items_Input;
   id: Scalars['ID'];
 };
 
 
-export type MutationUpdate_Menu_Item_ItemArgs = {
-  data: Update_Menu_Item_Input;
-  id: Scalars['ID'];
-};
-
-
-export type MutationUpdate_Menu_Item_ItemsArgs = {
-  data: Update_Menu_Item_Input;
-  filter?: InputMaybe<Menu_Item_Filter>;
+export type MutationUpdate_Menu_Items_ItemsArgs = {
+  data: Update_Menu_Items_Input;
+  filter?: InputMaybe<Menu_Items_Filter>;
   ids: Array<InputMaybe<Scalars['ID']>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -224,9 +282,51 @@ export type MutationUpdate_Menu_Item_ItemsArgs = {
 };
 
 
-export type MutationUpdate_Menu_ItemsArgs = {
-  data: Update_Menu_Input;
-  filter?: InputMaybe<Menu_Filter>;
+export type MutationUpdate_Menu_Items_Menu_Items_ItemArgs = {
+  data: Update_Menu_Items_Menu_Items_Input;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdate_Menu_Items_Menu_Items_ItemsArgs = {
+  data: Update_Menu_Items_Menu_Items_Input;
+  filter?: InputMaybe<Menu_Items_Menu_Items_Filter>;
+  ids: Array<InputMaybe<Scalars['ID']>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MutationUpdate_Menus_ItemArgs = {
+  data: Update_Menus_Input;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdate_Menus_ItemsArgs = {
+  data: Update_Menus_Input;
+  filter?: InputMaybe<Menus_Filter>;
+  ids: Array<InputMaybe<Scalars['ID']>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MutationUpdate_Menus_Menu_Items_ItemArgs = {
+  data: Update_Menus_Menu_Items_Input;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdate_Menus_Menu_Items_ItemsArgs = {
+  data: Update_Menus_Menu_Items_Input;
+  filter?: InputMaybe<Menus_Menu_Items_Filter>;
   ids: Array<InputMaybe<Scalars['ID']>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -276,12 +376,18 @@ export type Query = {
   categories?: Maybe<Array<Maybe<Categories>>>;
   categories_aggregated?: Maybe<Array<Maybe<Categories_Aggregated>>>;
   categories_by_id?: Maybe<Categories>;
-  menu?: Maybe<Array<Maybe<Menu>>>;
-  menu_aggregated?: Maybe<Array<Maybe<Menu_Aggregated>>>;
-  menu_by_id?: Maybe<Menu>;
-  menu_item?: Maybe<Array<Maybe<Menu_Item>>>;
-  menu_item_aggregated?: Maybe<Array<Maybe<Menu_Item_Aggregated>>>;
-  menu_item_by_id?: Maybe<Menu_Item>;
+  menu_items?: Maybe<Array<Maybe<Menu_Items>>>;
+  menu_items_aggregated?: Maybe<Array<Maybe<Menu_Items_Aggregated>>>;
+  menu_items_by_id?: Maybe<Menu_Items>;
+  menu_items_menu_items?: Maybe<Array<Maybe<Menu_Items_Menu_Items>>>;
+  menu_items_menu_items_aggregated?: Maybe<Array<Maybe<Menu_Items_Menu_Items_Aggregated>>>;
+  menu_items_menu_items_by_id?: Maybe<Menu_Items_Menu_Items>;
+  menus?: Maybe<Array<Maybe<Menus>>>;
+  menus_aggregated?: Maybe<Array<Maybe<Menus_Aggregated>>>;
+  menus_by_id?: Maybe<Menus>;
+  menus_menu_items?: Maybe<Array<Maybe<Menus_Menu_Items>>>;
+  menus_menu_items_aggregated?: Maybe<Array<Maybe<Menus_Menu_Items_Aggregated>>>;
+  menus_menu_items_by_id?: Maybe<Menus_Menu_Items>;
   products?: Maybe<Array<Maybe<Products>>>;
   products_aggregated?: Maybe<Array<Maybe<Products_Aggregated>>>;
   products_by_id?: Maybe<Products>;
@@ -315,8 +421,8 @@ export type QueryCategories_By_IdArgs = {
 };
 
 
-export type QueryMenuArgs = {
-  filter?: InputMaybe<Menu_Filter>;
+export type QueryMenu_ItemsArgs = {
+  filter?: InputMaybe<Menu_Items_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -325,8 +431,8 @@ export type QueryMenuArgs = {
 };
 
 
-export type QueryMenu_AggregatedArgs = {
-  filter?: InputMaybe<Menu_Filter>;
+export type QueryMenu_Items_AggregatedArgs = {
+  filter?: InputMaybe<Menu_Items_Filter>;
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
@@ -334,13 +440,13 @@ export type QueryMenu_AggregatedArgs = {
 };
 
 
-export type QueryMenu_By_IdArgs = {
+export type QueryMenu_Items_By_IdArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryMenu_ItemArgs = {
-  filter?: InputMaybe<Menu_Item_Filter>;
+export type QueryMenu_Items_Menu_ItemsArgs = {
+  filter?: InputMaybe<Menu_Items_Menu_Items_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -349,8 +455,8 @@ export type QueryMenu_ItemArgs = {
 };
 
 
-export type QueryMenu_Item_AggregatedArgs = {
-  filter?: InputMaybe<Menu_Item_Filter>;
+export type QueryMenu_Items_Menu_Items_AggregatedArgs = {
+  filter?: InputMaybe<Menu_Items_Menu_Items_Filter>;
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
@@ -358,7 +464,55 @@ export type QueryMenu_Item_AggregatedArgs = {
 };
 
 
-export type QueryMenu_Item_By_IdArgs = {
+export type QueryMenu_Items_Menu_Items_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryMenusArgs = {
+  filter?: InputMaybe<Menus_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryMenus_AggregatedArgs = {
+  filter?: InputMaybe<Menus_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryMenus_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryMenus_Menu_ItemsArgs = {
+  filter?: InputMaybe<Menus_Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryMenus_Menu_Items_AggregatedArgs = {
+  filter?: InputMaybe<Menus_Menu_Items_Filter>;
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryMenus_Menu_Items_By_IdArgs = {
   id: Scalars['ID'];
 };
 
@@ -425,11 +579,23 @@ export type Categories = {
   date_updated?: Maybe<Scalars['Date']>;
   date_updated_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Maybe<Products_Categories>>>;
+  products_func?: Maybe<Count_Functions>;
   slug?: Maybe<Scalars['String']>;
   sort?: Maybe<Scalars['Int']>;
   status: Scalars['String'];
   user_created?: Maybe<Directus_Users>;
   user_updated?: Maybe<Directus_Users>;
+};
+
+
+export type CategoriesProductsArgs = {
+  filter?: InputMaybe<Products_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -472,6 +638,7 @@ export type Categories_Aggregated_Count = {
   date_created?: Maybe<Scalars['Int']>;
   date_updated?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  products?: Maybe<Scalars['Int']>;
   slug?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['Int']>;
@@ -494,6 +661,8 @@ export type Categories_Filter = {
   date_updated?: InputMaybe<Date_Filter_Operators>;
   date_updated_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
+  products?: InputMaybe<Products_Categories_Filter>;
+  products_func?: InputMaybe<Count_Function_Filter_Operators>;
   slug?: InputMaybe<String_Filter_Operators>;
   sort?: InputMaybe<Number_Filter_Operators>;
   status?: InputMaybe<String_Filter_Operators>;
@@ -521,6 +690,8 @@ export type Create_Categories_Input = {
   date_updated?: InputMaybe<Scalars['Date']>;
   date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
+  products?: InputMaybe<Array<InputMaybe<Create_Products_Categories_Input>>>;
+  products_func?: InputMaybe<Count_FunctionsInput>;
   slug?: InputMaybe<Scalars['String']>;
   sort?: InputMaybe<Scalars['Int']>;
   status: Scalars['String'];
@@ -602,15 +773,47 @@ export type Create_Directus_Users_Input = {
   token?: InputMaybe<Scalars['String']>;
 };
 
-export type Create_Menu_Input = {
+export type Create_Menu_Items_Input = {
+  child_items?: InputMaybe<Array<InputMaybe<Create_Menu_Items_Menu_Items_Input>>>;
+  child_items_func?: InputMaybe<Count_FunctionsInput>;
+  date_created?: InputMaybe<Scalars['Date']>;
+  date_created_func?: InputMaybe<Datetime_FunctionsInput>;
+  date_updated?: InputMaybe<Scalars['Date']>;
+  date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
-  item?: InputMaybe<Create_Menu_Item_Input>;
+  path?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  status: Scalars['String'];
   title?: InputMaybe<Scalars['String']>;
+  user_created?: InputMaybe<Create_Directus_Users_Input>;
+  user_updated?: InputMaybe<Create_Directus_Users_Input>;
 };
 
-export type Create_Menu_Item_Input = {
+export type Create_Menu_Items_Menu_Items_Input = {
   id?: InputMaybe<Scalars['ID']>;
+  menu_items_id?: InputMaybe<Create_Menu_Items_Input>;
+  related_menu_items_id?: InputMaybe<Create_Menu_Items_Input>;
+};
+
+export type Create_Menus_Input = {
+  date_created?: InputMaybe<Scalars['Date']>;
+  date_created_func?: InputMaybe<Datetime_FunctionsInput>;
+  date_updated?: InputMaybe<Scalars['Date']>;
+  date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  items?: InputMaybe<Array<InputMaybe<Create_Menus_Menu_Items_Input>>>;
+  items_func?: InputMaybe<Count_FunctionsInput>;
   name?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  status: Scalars['String'];
+  user_created?: InputMaybe<Create_Directus_Users_Input>;
+  user_updated?: InputMaybe<Create_Directus_Users_Input>;
+};
+
+export type Create_Menus_Menu_Items_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  menu_items_id?: InputMaybe<Create_Menu_Items_Input>;
+  menus_id?: InputMaybe<Create_Menus_Input>;
 };
 
 export type Create_Products_Categories_Input = {
@@ -620,14 +823,14 @@ export type Create_Products_Categories_Input = {
 };
 
 export type Create_Products_Input = {
+  categories?: InputMaybe<Array<InputMaybe<Create_Products_Categories_Input>>>;
+  categories_func?: InputMaybe<Count_FunctionsInput>;
   date_created?: InputMaybe<Scalars['Date']>;
   date_created_func?: InputMaybe<Datetime_FunctionsInput>;
   date_updated?: InputMaybe<Scalars['Date']>;
   date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
   price: Scalars['Float'];
-  product_categories?: InputMaybe<Array<InputMaybe<Create_Products_Categories_Input>>>;
-  product_categories_func?: InputMaybe<Count_FunctionsInput>;
   product_description?: InputMaybe<Scalars['String']>;
   product_image?: InputMaybe<Create_Directus_Files_Input>;
   product_name?: InputMaybe<Scalars['String']>;
@@ -923,16 +1126,26 @@ export type Directus_Users_Filter = {
   token?: InputMaybe<String_Filter_Operators>;
 };
 
-export type Menu = {
-  __typename?: 'menu';
+export type Menu_Items = {
+  __typename?: 'menu_items';
+  child_items?: Maybe<Array<Maybe<Menu_Items_Menu_Items>>>;
+  child_items_func?: Maybe<Count_Functions>;
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
+  date_updated?: Maybe<Scalars['Date']>;
+  date_updated_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
-  item?: Maybe<Menu_Item>;
+  path?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
+  status: Scalars['String'];
   title?: Maybe<Scalars['String']>;
+  user_created?: Maybe<Directus_Users>;
+  user_updated?: Maybe<Directus_Users>;
 };
 
 
-export type MenuItemArgs = {
-  filter?: InputMaybe<Menu_Item_Filter>;
+export type Menu_ItemsChild_ItemsArgs = {
+  filter?: InputMaybe<Menu_Items_Menu_Items_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -940,77 +1153,298 @@ export type MenuItemArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type Menu_Aggregated = {
-  __typename?: 'menu_aggregated';
-  avg?: Maybe<Menu_Aggregated_Fields>;
-  avgDistinct?: Maybe<Menu_Aggregated_Fields>;
-  count?: Maybe<Menu_Aggregated_Count>;
-  countAll?: Maybe<Scalars['Int']>;
-  countDistinct?: Maybe<Menu_Aggregated_Fields>;
-  group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<Menu_Aggregated_Fields>;
-  min?: Maybe<Menu_Aggregated_Fields>;
-  sum?: Maybe<Menu_Aggregated_Fields>;
-  sumDistinct?: Maybe<Menu_Aggregated_Fields>;
+
+export type Menu_ItemsUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type Menu_Aggregated_Count = {
-  __typename?: 'menu_aggregated_count';
+
+export type Menu_ItemsUser_UpdatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type Menu_Items_Aggregated = {
+  __typename?: 'menu_items_aggregated';
+  avg?: Maybe<Menu_Items_Aggregated_Fields>;
+  avgDistinct?: Maybe<Menu_Items_Aggregated_Fields>;
+  count?: Maybe<Menu_Items_Aggregated_Count>;
+  countAll?: Maybe<Scalars['Int']>;
+  countDistinct?: Maybe<Menu_Items_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Menu_Items_Aggregated_Fields>;
+  min?: Maybe<Menu_Items_Aggregated_Fields>;
+  sum?: Maybe<Menu_Items_Aggregated_Fields>;
+  sumDistinct?: Maybe<Menu_Items_Aggregated_Fields>;
+};
+
+export type Menu_Items_Aggregated_Count = {
+  __typename?: 'menu_items_aggregated_count';
+  child_items?: Maybe<Scalars['Int']>;
+  date_created?: Maybe<Scalars['Int']>;
+  date_updated?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
-  item?: Maybe<Scalars['Int']>;
+  path?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<Scalars['Int']>;
+  user_updated?: Maybe<Scalars['Int']>;
 };
 
-export type Menu_Aggregated_Fields = {
-  __typename?: 'menu_aggregated_fields';
+export type Menu_Items_Aggregated_Fields = {
+  __typename?: 'menu_items_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
-  item?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
 };
 
-export type Menu_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<Menu_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<Menu_Filter>>>;
+export type Menu_Items_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Menu_Items_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Menu_Items_Filter>>>;
+  child_items?: InputMaybe<Menu_Items_Menu_Items_Filter>;
+  child_items_func?: InputMaybe<Count_Function_Filter_Operators>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  date_updated?: InputMaybe<Date_Filter_Operators>;
+  date_updated_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
-  item?: InputMaybe<Menu_Item_Filter>;
+  path?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  status?: InputMaybe<String_Filter_Operators>;
   title?: InputMaybe<String_Filter_Operators>;
+  user_created?: InputMaybe<Directus_Users_Filter>;
+  user_updated?: InputMaybe<Directus_Users_Filter>;
 };
 
-export type Menu_Item = {
-  __typename?: 'menu_item';
+export type Menu_Items_Menu_Items = {
+  __typename?: 'menu_items_menu_items';
   id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
+  menu_items_id?: Maybe<Menu_Items>;
+  related_menu_items_id?: Maybe<Menu_Items>;
 };
 
-export type Menu_Item_Aggregated = {
-  __typename?: 'menu_item_aggregated';
-  avg?: Maybe<Menu_Item_Aggregated_Fields>;
-  avgDistinct?: Maybe<Menu_Item_Aggregated_Fields>;
-  count?: Maybe<Menu_Item_Aggregated_Count>;
+
+export type Menu_Items_Menu_ItemsMenu_Items_IdArgs = {
+  filter?: InputMaybe<Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Menu_Items_Menu_ItemsRelated_Menu_Items_IdArgs = {
+  filter?: InputMaybe<Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type Menu_Items_Menu_Items_Aggregated = {
+  __typename?: 'menu_items_menu_items_aggregated';
+  avg?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
+  avgDistinct?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
+  count?: Maybe<Menu_Items_Menu_Items_Aggregated_Count>;
   countAll?: Maybe<Scalars['Int']>;
-  countDistinct?: Maybe<Menu_Item_Aggregated_Fields>;
+  countDistinct?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
   group?: Maybe<Scalars['JSON']>;
-  max?: Maybe<Menu_Item_Aggregated_Fields>;
-  min?: Maybe<Menu_Item_Aggregated_Fields>;
-  sum?: Maybe<Menu_Item_Aggregated_Fields>;
-  sumDistinct?: Maybe<Menu_Item_Aggregated_Fields>;
+  max?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
+  min?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
+  sum?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
+  sumDistinct?: Maybe<Menu_Items_Menu_Items_Aggregated_Fields>;
 };
 
-export type Menu_Item_Aggregated_Count = {
-  __typename?: 'menu_item_aggregated_count';
+export type Menu_Items_Menu_Items_Aggregated_Count = {
+  __typename?: 'menu_items_menu_items_aggregated_count';
   id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['Int']>;
+  menu_items_id?: Maybe<Scalars['Int']>;
+  related_menu_items_id?: Maybe<Scalars['Int']>;
 };
 
-export type Menu_Item_Aggregated_Fields = {
-  __typename?: 'menu_item_aggregated_fields';
+export type Menu_Items_Menu_Items_Aggregated_Fields = {
+  __typename?: 'menu_items_menu_items_aggregated_fields';
   id?: Maybe<Scalars['Float']>;
+  menu_items_id?: Maybe<Scalars['Float']>;
+  related_menu_items_id?: Maybe<Scalars['Float']>;
 };
 
-export type Menu_Item_Filter = {
-  _and?: InputMaybe<Array<InputMaybe<Menu_Item_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<Menu_Item_Filter>>>;
+export type Menu_Items_Menu_Items_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Menu_Items_Menu_Items_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Menu_Items_Menu_Items_Filter>>>;
   id?: InputMaybe<Number_Filter_Operators>;
+  menu_items_id?: InputMaybe<Menu_Items_Filter>;
+  related_menu_items_id?: InputMaybe<Menu_Items_Filter>;
+};
+
+export type Menus = {
+  __typename?: 'menus';
+  date_created?: Maybe<Scalars['Date']>;
+  date_created_func?: Maybe<Datetime_Functions>;
+  date_updated?: Maybe<Scalars['Date']>;
+  date_updated_func?: Maybe<Datetime_Functions>;
+  id?: Maybe<Scalars['ID']>;
+  items?: Maybe<Array<Maybe<Menus_Menu_Items>>>;
+  items_func?: Maybe<Count_Functions>;
+  name?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['Int']>;
+  status: Scalars['String'];
+  user_created?: Maybe<Directus_Users>;
+  user_updated?: Maybe<Directus_Users>;
+};
+
+
+export type MenusItemsArgs = {
+  filter?: InputMaybe<Menus_Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MenusUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type MenusUser_UpdatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type Menus_Aggregated = {
+  __typename?: 'menus_aggregated';
+  avg?: Maybe<Menus_Aggregated_Fields>;
+  avgDistinct?: Maybe<Menus_Aggregated_Fields>;
+  count?: Maybe<Menus_Aggregated_Count>;
+  countAll?: Maybe<Scalars['Int']>;
+  countDistinct?: Maybe<Menus_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Menus_Aggregated_Fields>;
+  min?: Maybe<Menus_Aggregated_Fields>;
+  sum?: Maybe<Menus_Aggregated_Fields>;
+  sumDistinct?: Maybe<Menus_Aggregated_Fields>;
+};
+
+export type Menus_Aggregated_Count = {
+  __typename?: 'menus_aggregated_count';
+  date_created?: Maybe<Scalars['Int']>;
+  date_updated?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  items?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<Scalars['Int']>;
+  user_updated?: Maybe<Scalars['Int']>;
+};
+
+export type Menus_Aggregated_Fields = {
+  __typename?: 'menus_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+};
+
+export type Menus_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Menus_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Menus_Filter>>>;
+  date_created?: InputMaybe<Date_Filter_Operators>;
+  date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  date_updated?: InputMaybe<Date_Filter_Operators>;
+  date_updated_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  items?: InputMaybe<Menus_Menu_Items_Filter>;
+  items_func?: InputMaybe<Count_Function_Filter_Operators>;
   name?: InputMaybe<String_Filter_Operators>;
+  sort?: InputMaybe<Number_Filter_Operators>;
+  status?: InputMaybe<String_Filter_Operators>;
+  user_created?: InputMaybe<Directus_Users_Filter>;
+  user_updated?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Menus_Menu_Items = {
+  __typename?: 'menus_menu_items';
+  id?: Maybe<Scalars['ID']>;
+  menu_items_id?: Maybe<Menu_Items>;
+  menus_id?: Maybe<Menus>;
+};
+
+
+export type Menus_Menu_ItemsMenu_Items_IdArgs = {
+  filter?: InputMaybe<Menu_Items_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Menus_Menu_ItemsMenus_IdArgs = {
+  filter?: InputMaybe<Menus_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type Menus_Menu_Items_Aggregated = {
+  __typename?: 'menus_menu_items_aggregated';
+  avg?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  avgDistinct?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  count?: Maybe<Menus_Menu_Items_Aggregated_Count>;
+  countAll?: Maybe<Scalars['Int']>;
+  countDistinct?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  group?: Maybe<Scalars['JSON']>;
+  max?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  min?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  sum?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+  sumDistinct?: Maybe<Menus_Menu_Items_Aggregated_Fields>;
+};
+
+export type Menus_Menu_Items_Aggregated_Count = {
+  __typename?: 'menus_menu_items_aggregated_count';
+  id?: Maybe<Scalars['Int']>;
+  menu_items_id?: Maybe<Scalars['Int']>;
+  menus_id?: Maybe<Scalars['Int']>;
+};
+
+export type Menus_Menu_Items_Aggregated_Fields = {
+  __typename?: 'menus_menu_items_aggregated_fields';
+  id?: Maybe<Scalars['Float']>;
+  menu_items_id?: Maybe<Scalars['Float']>;
+  menus_id?: Maybe<Scalars['Float']>;
+};
+
+export type Menus_Menu_Items_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Menus_Menu_Items_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<Menus_Menu_Items_Filter>>>;
+  id?: InputMaybe<Number_Filter_Operators>;
+  menu_items_id?: InputMaybe<Menu_Items_Filter>;
+  menus_id?: InputMaybe<Menus_Filter>;
 };
 
 export type Number_Filter_Operators = {
@@ -1028,14 +1462,14 @@ export type Number_Filter_Operators = {
 
 export type Products = {
   __typename?: 'products';
+  categories?: Maybe<Array<Maybe<Products_Categories>>>;
+  categories_func?: Maybe<Count_Functions>;
   date_created?: Maybe<Scalars['Date']>;
   date_created_func?: Maybe<Datetime_Functions>;
   date_updated?: Maybe<Scalars['Date']>;
   date_updated_func?: Maybe<Datetime_Functions>;
   id?: Maybe<Scalars['ID']>;
   price: Scalars['Float'];
-  product_categories?: Maybe<Array<Maybe<Products_Categories>>>;
-  product_categories_func?: Maybe<Count_Functions>;
   product_description?: Maybe<Scalars['String']>;
   product_image?: Maybe<Directus_Files>;
   product_name?: Maybe<Scalars['String']>;
@@ -1047,7 +1481,7 @@ export type Products = {
 };
 
 
-export type ProductsProduct_CategoriesArgs = {
+export type ProductsCategoriesArgs = {
   filter?: InputMaybe<Products_Categories_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1102,11 +1536,11 @@ export type Products_Aggregated = {
 
 export type Products_Aggregated_Count = {
   __typename?: 'products_aggregated_count';
+  categories?: Maybe<Scalars['Int']>;
   date_created?: Maybe<Scalars['Int']>;
   date_updated?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   price?: Maybe<Scalars['Int']>;
-  product_categories?: Maybe<Scalars['Int']>;
   product_description?: Maybe<Scalars['Int']>;
   product_image?: Maybe<Scalars['Int']>;
   product_name?: Maybe<Scalars['Int']>;
@@ -1190,14 +1624,14 @@ export type Products_Categories_Filter = {
 export type Products_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Products_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<Products_Filter>>>;
+  categories?: InputMaybe<Products_Categories_Filter>;
+  categories_func?: InputMaybe<Count_Function_Filter_Operators>;
   date_created?: InputMaybe<Date_Filter_Operators>;
   date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   date_updated?: InputMaybe<Date_Filter_Operators>;
   date_updated_func?: InputMaybe<Datetime_Function_Filter_Operators>;
   id?: InputMaybe<Number_Filter_Operators>;
   price?: InputMaybe<Number_Filter_Operators>;
-  product_categories?: InputMaybe<Products_Categories_Filter>;
-  product_categories_func?: InputMaybe<Count_Function_Filter_Operators>;
   product_description?: InputMaybe<String_Filter_Operators>;
   product_image?: InputMaybe<Directus_Files_Filter>;
   product_name?: InputMaybe<String_Filter_Operators>;
@@ -1232,6 +1666,8 @@ export type Update_Categories_Input = {
   date_updated?: InputMaybe<Scalars['Date']>;
   date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
+  products?: InputMaybe<Array<InputMaybe<Update_Products_Categories_Input>>>;
+  products_func?: InputMaybe<Count_FunctionsInput>;
   slug?: InputMaybe<Scalars['String']>;
   sort?: InputMaybe<Scalars['Int']>;
   status?: InputMaybe<Scalars['String']>;
@@ -1313,15 +1749,47 @@ export type Update_Directus_Users_Input = {
   token?: InputMaybe<Scalars['String']>;
 };
 
-export type Update_Menu_Input = {
+export type Update_Menu_Items_Input = {
+  child_items?: InputMaybe<Array<InputMaybe<Update_Menu_Items_Menu_Items_Input>>>;
+  child_items_func?: InputMaybe<Count_FunctionsInput>;
+  date_created?: InputMaybe<Scalars['Date']>;
+  date_created_func?: InputMaybe<Datetime_FunctionsInput>;
+  date_updated?: InputMaybe<Scalars['Date']>;
+  date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
-  item?: InputMaybe<Update_Menu_Item_Input>;
+  path?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
+  user_created?: InputMaybe<Update_Directus_Users_Input>;
+  user_updated?: InputMaybe<Update_Directus_Users_Input>;
 };
 
-export type Update_Menu_Item_Input = {
+export type Update_Menu_Items_Menu_Items_Input = {
   id?: InputMaybe<Scalars['ID']>;
+  menu_items_id?: InputMaybe<Update_Menu_Items_Input>;
+  related_menu_items_id?: InputMaybe<Update_Menu_Items_Input>;
+};
+
+export type Update_Menus_Input = {
+  date_created?: InputMaybe<Scalars['Date']>;
+  date_created_func?: InputMaybe<Datetime_FunctionsInput>;
+  date_updated?: InputMaybe<Scalars['Date']>;
+  date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  items?: InputMaybe<Array<InputMaybe<Update_Menus_Menu_Items_Input>>>;
+  items_func?: InputMaybe<Count_FunctionsInput>;
   name?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
+  user_created?: InputMaybe<Update_Directus_Users_Input>;
+  user_updated?: InputMaybe<Update_Directus_Users_Input>;
+};
+
+export type Update_Menus_Menu_Items_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  menu_items_id?: InputMaybe<Update_Menu_Items_Input>;
+  menus_id?: InputMaybe<Update_Menus_Input>;
 };
 
 export type Update_Products_Categories_Input = {
@@ -1331,14 +1799,14 @@ export type Update_Products_Categories_Input = {
 };
 
 export type Update_Products_Input = {
+  categories?: InputMaybe<Array<InputMaybe<Update_Products_Categories_Input>>>;
+  categories_func?: InputMaybe<Count_FunctionsInput>;
   date_created?: InputMaybe<Scalars['Date']>;
   date_created_func?: InputMaybe<Datetime_FunctionsInput>;
   date_updated?: InputMaybe<Scalars['Date']>;
   date_updated_func?: InputMaybe<Datetime_FunctionsInput>;
   id?: InputMaybe<Scalars['ID']>;
   price?: InputMaybe<Scalars['Float']>;
-  product_categories?: InputMaybe<Array<InputMaybe<Update_Products_Categories_Input>>>;
-  product_categories_func?: InputMaybe<Count_FunctionsInput>;
   product_description?: InputMaybe<Scalars['String']>;
   product_image?: InputMaybe<Update_Directus_Files_Input>;
   product_name?: InputMaybe<Scalars['String']>;
