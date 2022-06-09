@@ -66,10 +66,11 @@ export const SlidingMenu: ComponentType = () => {
                         <RootElement onClick={() => handleClick(id as string)}>
                           {menu_items_id.title}
                         </RootElement>
-                        {/* <FirstSubMenu
-                          items={menu_items_id.child_items}
-                          isExpanded={currentMenuItem === item.id}
-                        /> */}
+                        <FirstSubMenu
+                          items={menu_items_id.child_items!}
+                          isExpanded={currentMenuItem === menu_items_id.id}
+                          parentSlug={menu_items_id.path!}
+                        />
                       </>
                     );
                   } else {

@@ -8,29 +8,27 @@ import {
   setParentMenuLabel,
 } from "@src/store/actions/actions";
 import { useAppState } from "@src/store/AppStateContext";
-
-import type { MenuItemNode } from "@hooks/useHeaderMenu";
+import type { Menu_Items_Menu_Items } from "@src/generated/graphql";
 
 type ComponentProps = {
   isExpanded: boolean;
-  items: MenuItemNode[];
+  items: Menu_Items_Menu_Items[];
+  parentSlug: string;
 };
 
 type ComponentType = React.VFC<ComponentProps>;
 
-export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
+export const FirstSubMenu: ComponentType = ({
+  isExpanded,
+  items,
+  parentSlug,
+}) => {
   const { currentMenuSubItem, parentMenuLabel, dispatch } = useAppState();
 
-  const handleClick = useCallback(({
-    id,
-    label
-  }: {
-    id: string;
-    label: string;
-  }) => {
+  const handleClick = useCallback((id: string, title: string) => {
     dispatch(setMenuLevel(1));
     dispatch(setCurrentMenuSubItem(id));
-    dispatch(setParentMenuLabel(label));
+    dispatch(setParentMenuLabel(title));
   }, []);
 
   const handleReturn = useCallback((previous: string) => {
@@ -41,28 +39,45 @@ export const FirstSubMenu: ComponentType = ({ isExpanded, items }) => {
   return (
     <SubMenu isExpanded={isExpanded}>
       {items.map((item) => {
-        const hasSubItems = item.childItems.nodes.length > 0;
+        const { related_menu_items_id } = item;
+        const hasSubItems = !!related_menu_items_id?.child_items;
+
+        if (!related_menu_items_id) {
+          return;
+        }
+
+        const urlTo = `${parentSlug}/${related_menu_items_id.path!}`;
 
         return (
-          <SubMenuItem key={item.id}>
+          <SubMenuItem key={related_menu_items_id.id}>
             {(function () {
               if (hasSubItems) {
                 return (
                   <>
-                    <Link to={item.path} onClick={() => handleClick(item)}>
-                      {item.label}
+                    <Link
+                      to={urlTo}
+                      onClick={() =>
+                        handleClick(
+                          related_menu_items_id.id!,
+                          related_menu_items_id.title!
+                        )
+                      }
+                    >
+                      {related_menu_items_id.title}
                     </Link>
-                    <SlidingSubMenu
-                      isHidden={currentMenuSubItem !== item.id}
+                    {/*<SlidingSubMenu
+                      isHidden={currentMenuSubItem !== related_menu_items_id.id}
                       parentLabel={parentMenuLabel}
-                      items={item.childItems.nodes}
+                      items={related_menu_items_id.child_items}
                       level={1}
-                      onReturn={() => handleReturn(item.path)}
-                    />
+                      onReturn={() =>
+                        handleReturn(related_menu_items_id.path as string)
+                      }
+                    />*/}
                   </>
                 );
               } else {
-                return <Link to={item.path}>{item.label}</Link>;
+                return <Link to={urlTo}>{related_menu_items_id.title}</Link>;
               }
             })()}
           </SubMenuItem>
